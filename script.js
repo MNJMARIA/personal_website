@@ -109,13 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// УПРАВЛІННЯ ОКРЕМІМИ СТОРІНКАМИ ПРОЄКТІВ
+// УПРАВЛІННЯ ОКРЕМІМИ СТОРІНКАМИ ПРОЄКТІВ (З ПІДТРИМКОЮ ІСТОРІЇ БРАУЗЕРА)
 // ==========================================
 function openProjectPage(pageId) {
     const page = document.getElementById(pageId);
     if (page) {
         page.classList.add('active');
         document.body.style.overflow = 'hidden'; // Фіксуємо задній фон
+        
+        // Додаємо запис в історію браузера, змінюючи хеш (наприклад, #view-project-1)
+        if (window.location.hash !== `#view-${pageId}`) {
+            history.pushState({ projectPageId: pageId }, '', `#view-${pageId}`);
+        }
     }
 }
 
@@ -124,8 +129,47 @@ function closeProjectPage(pageId) {
     if (page) {
         page.classList.remove('active');
         document.body.style.overflow = ''; // Повертаємо скрол основного сайту
+        
+        // Якщо користувач натиснув хрестик в інтерфейсі, очищуємо хеш до секції проєктів
+        if (window.location.hash.startsWith('#view-')) {
+            history.pushState(null, '', '#projects');
+        }
     }
 }
+
+// Слухаємо подію натискання системної кнопки "Назад" у браузері (або "Вперед")
+window.addEventListener('popstate', (event) => {
+    // Спочатку закриваємо абсолютно всі відкриті сторінки проєктів
+    document.querySelectorAll('.project-page-view').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+
+    // Якщо в історії браузера збережено стан конкретного проєкту — відкриваємо його
+    if (event.state && event.state.projectPageId) {
+        const activePage = document.getElementById(event.state.projectPageId);
+        if (activePage) {
+            activePage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    } else if (window.location.hash.startsWith('#view-')) {
+        // Альтернативна перевірка за поточним хешем URL, якщо state порожній
+        const pageId = window.location.hash.replace('#view-', '');
+        const activePage = document.getElementById(pageId);
+        if (activePage) {
+            activePage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+});
+
+// Перевірка при початковому завантаженні сторінки (на випадок, якщо користувач оновив сторінку прямо всередині кейсу)
+window.addEventListener('load', () => {
+    if (window.location.hash.startsWith('#view-')) {
+        const pageId = window.location.hash.replace('#view-', '');
+        openProjectPage(pageId);
+    }
+});
 
 // ==========================================
 // ЛОГІКА МОБІЛЬНОГО ПОВНОЕКРАННОГО МЕНЮ

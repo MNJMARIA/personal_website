@@ -1,284 +1,12 @@
-<!-- <!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Марія Степанова | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:YOPX,wght@200..900,-400..200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div class="cursor-glow"></div>
-
-    <div class="bg-shapes">
-        <div class="abstract-blob blob-1"></div>
-        <div class="abstract-blob blob-2"></div>
-        <div class="grid-lines"></div>
-    </div>
-
-    <header class="navbar">
-        <div class="logo">MS<span>.</span></div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-item active" data-ua="Головна" data-en="Home">Головна</a></li>
-                <li><a href="#about" class="nav-item" data-ua="Про мене" data-en="About">Про мене</a></li>
-                <li><a href="#projects" class="nav-item" data-ua="Проєкти" data-en="Projects">Проєкти</a></li>
-                <li><a href="#skills" class="nav-item" data-ua="Навички" data-en="Skills">Навички</a></li>
-                <li><a href="#experience" class="nav-item" data-ua="Досвід" data-en="Experience">Досвід</a></li>
-                <li><a href="#contact" class="nav-item" data-ua="Контакти" data-en="Contact">Контакти</a></li>
-            </ul>
-        </nav>
-        <button id="lang-toggle" class="lang-btn">EN</button>
-    </header>
-
-    <main>
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <p class="hero-subtitle" data-ua="Портфоліо розробника" data-en="Developer Portfolio">Портфоліо розробника</p>
-                <h1 class="hero-title">Backend Developer <br>& Data Science</h1>
-                <p class="hero-description" data-ua="Проєктування архітектури, створення стабільних сервісів на Java (Spring) та інтелектуальний аналіз даних за допомогою Python." data-en="Designing architectures, building stable Java (Spring) services, and performing smart data analytics with Python.">
-                    Проєктую архітектуру, створення стабільних сервісів на Java (Spring) та інтелектуальний аналіз даних за допомогою Python.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary" data-ua="Дивитись роботи" data-en="View Works">Дивитись роботи</a>
-                    <a href="#contact" class="btn btn-secondary" data-ua="Зв'язатися" data-en="Get in touch">Зв'язатися</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title" data-ua="Про мене" data-en="About me">Про мене</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p data-ua="Я студентка факультету інформатики та обчислювальної техніки КПІ ім. Ігоря Сікорського. Поєдную інженерний backend-підхід із математичними моделями прогнозування часових рядів." data-en="I am a student at the Faculty of Informatics and Computer Science, Igor Sikorsky KPI. I combine an engineering backend approach with mathematical time-series forecasting models.">
-                            Я студентка факультету інформатики та обчислювальної техніки КПІ ім. Ігоря Сікорського. Поєдную інженерний backend-підхід із математичними моделями прогнозування часових рядів.
-                        </p>
-                        <p data-ua="Мій фокус — створення чистого, масштабованого коду, оптимізація складних SQL-запитів та впровадження алгоритмів машинного навчання для аналізу фінансових активів." data-en="My focus is creating clean, scalable code, optimizing complex SQL queries, and implementing machine learning algorithms for financial asset analysis.">
-                            Мій фокус — створення чистого, масштабованого коду, оптимізація складних SQL-запитів та впровадження алгоритмів машинного навчання для аналізу фінансових активів.
-                        </p>
-                    </div>
-                    <div class="about-meta">
-                        <div class="meta-item"><span data-ua="Локація:" data-en="Location:">Локація:</span> <strong>Київ / Черкаси, Україна</strong></div>
-                        <div class="meta-item"><span data-ua="Навчання:" data-en="Education:">Навчання:</span> <strong>ФІОТ, НТУУ "КПІ"</strong></div>
-                        <div class="meta-item"><span data-ua="Профіль:" data-en="Profile:">Профіль:</span> <strong>Junior Java Developer / Data Analyst</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="container">
-                <h2 class="section-title" data-ua="Обрані проєкти" data-en="Selected Projects">Обрані проєкти</h2>
-                <div class="projects-grid">
-                    
-                    <div class="project-card" onclick="openProjectModal('project-1')">
-                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.4), #0d0e10), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800');"></div>
-                        <div class="project-card-info">
-                            <span class="project-tag">Java / Spring / SQL</span>
-                            <h3>City Registry & Finmate API</h3>
-                            <p data-ua="Клацніть, щоб переглянути деталі, документацію та відео" data-en="Click to view details, documentation and video demo">Клацніть, щоб переглянути деталі, документацію та відео</p>
-                        </div>
-                    </div>
-
-                    <div class="project-card" onclick="openProjectModal('project-2')">
-                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.4), #0d0e10), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800');"></div>
-                        <div class="project-card-info">
-                            <span class="project-tag">Python / Data Science</span>
-                            <h3>Time-Series Investment Analysis</h3>
-                            <p data-ua="Клацніть, щоб переглянути курсову роботу та графіки моделей" data-en="Click to view coursework details and model plots">Клацніть, щоб переглянути курсову роботу та графіки моделей</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title" data-ua="Навички" data-en="Skills">Навички</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <ul class="skill-list">
-                            <li>Java Core (OOP, Collections)</li>
-                            <li>Spring Framework (Boot, Data, MVC)</li>
-                            <li>REST API & Swagger UI</li>
-                            <li>PostgreSQL / MySQL / Supabase</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Data Science</h3>
-                        <ul class="skill-list">
-                            <li>Python (Pandas, NumPy, Matplotlib)</li>
-                            <li>Statistical Modeling & Forecasting</li>
-                            <li>ARIMA / SARIMAX / LSTM models</li>
-                            <li>Data Preprocessing & Cleaning</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Tools & Cloud</h3>
-                        <ul class="skill-list">
-                            <li>Git / GitHub & GitHub Pages</li>
-                            <li>Heroku / Render Deployment</li>
-                            <li>Google Cloud Platform (GCP)</li>
-                            <li>Jira / Agile / Scrum workflow</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="section">
-            <div class="container">
-                <h2 class="section-title" data-ua="Шлях та досвід" data-en="Experience">Шлях та досвід</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2026</div>
-                        <div class="timeline-content">
-                            <h4 data-ua="EPAM Systems — Java Fundamentals" data-en="EPAM Systems — Java Fundamentals">EPAM Systems — Java Fundamentals</h4>
-                            <p data-ua="Поглиблене вивчення архітектури Java сервісів, SOLID принципів та написання стабільного серверного коду." data-en="Deep dive into Java service architecture, SOLID principles, and backend server-side development.">Поглиблене вивчення архітектури Java сервісів, SOLID принципів та написання стабільного серверного коду.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2025 - 2026</div>
-                        <div class="timeline-content">
-                            <h4 data-ua="Академічні та Індивідуальні проєкти" data-en="Academic & Independent Projects">Академічні та Індивідуальні проєкти</h4>
-                            <p data-ua="Розробка баз даних, налаштування CI/CD процесів та деплой сервісів на Render і Supabase. Управління завданнями через Jira." data-en="Database design, CI/CD pipelines setups, and service deployment on Render and Supabase. Project tracking via Jira.">Розробка баз даних, налаштування CI/CD процесів та деплой сервісів на Render і Supabase. Управління завданнями через Jira.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <div class="timeline-content">
-                            <h4 data-ua="Girls Business Academy 1.0" data-en="Girls Business Academy 1.0">Girls Business Academy 1.0</h4>
-                            <p data-ua="Акселераційна програма від ГО 'Ліга жінок'. Розвиток навичок презентації, керування ризиками та командного менеджменту." data-en="Acceleration program by NGO 'Women's League'. Development of presentation skills, risk mitigation, and team management.">Акселераційна програма від ГО "Ліга жінок". Розвиток навичок презентації, керування ризиками та командного менеджменту.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title" data-ua="Контакти" data-en="Contact">Контакти</h2>
-                <div class="contact-grid">
-                    <div class="contact-text">
-                        <p data-ua="Завжди відкрита до обговорення Junior Java чи Data Science позицій, стажувань та цікавого співробітництва." data-en="Always open to discuss Junior Java or Data Science positions, internships, and tech collaborations.">
-                            Завжди відкрита до обговорення Junior Java чи Data Science позицій, стажувань та цікавого співробітництва.
-                        </p>
-                        <div class="contact-details">
-                            <p>Email: <a href="mailto:stepanova.maria.ol@gmail.com">stepanova.maria.ol@gmail.com</a></p>
-                            <p>GitHub: <a href="https://github.com" target="_blank">github.com/maria-stepanova</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-form-block">
-                        <form onsubmit="event.preventDefault(); alert('Дякую! Форма надіслана (Деморежим)');">
-                            <input type="text" placeholder="Name" required>
-                            <input type="email" placeholder="Email" required>
-                            <textarea placeholder="Your message..." rows="4" required></textarea>
-                            <button type="submit" class="btn btn-primary" data-ua="Надіслати" data-en="Send Message">Надіслати</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="project-1" class="project-overlay-page">
-        <button class="close-overlay-btn" onclick="closeProjectModal('project-1')">← Back to Portfolio</button>
-        <div class="overlay-hero" style="background-image: linear-gradient(to bottom, rgba(13,14,16,0.6), #0d0e10), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1400');">
-            <div class="overlay-container">
-                <span class="project-tag">Java Backend</span>
-                <h2 class="overlay-title">City Registry & Finmate API</h2>
-            </div>
-        </div>
-        <div class="overlay-content">
-            <div class="overlay-container grid-layout">
-                <div class="main-info">
-                    <h3 data-ua="Про проєкт" data-en="About Project">Про проєкт</h3>
-                    <p data-ua="Комплексна розробка серверної архітектури для міського реєстру та управління фінансовими даними. Проєкт включає побудову оптимальних реляційних зв'язків та автоматичну генерацію документації." data-en="Comprehensive development of server architecture for the city registry and financial data management. The project includes building optimal relational structures and auto-generating documentation.">
-                        Комплексна розробка серверної архітектури для міського реєстру та управління фінансовими даними. Проєкт включає побудову оптимальних реляційних зв'язків та автоматичну генерацію документації.
-                    </p>
-                    
-                    <h3 data-ua="Демонстрація роботи" data-en="Video Demo">Демонстрація роботи</h3>
-                    <div class="video-placeholder">
-                        <div class="video-mock-text" data-ua="[ Місце для завантаження відео-презентації API / Swagger UI ]" data-en="[ Space for API / Swagger UI video walk-through ]">[ Місце для завантаження відео-презентації API / Swagger UI ]</div>
-                    </div>
-
-                    <h3 data-ua="Скриншоти інтерфейсу та БД" data-en="App Screenshots">Скриншоти інтерфейсу та БД</h3>
-                    <div class="screenshots-gallery">
-                        <div class="screenshot-item" style="background-image: url('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=600');"></div>
-                        <div class="screenshot-item" style="background-image: url('https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=600');"></div>
-                    </div>
-                </div>
-                <div class="side-meta">
-                    <h3 data-ua="Технології" data-en="Tech Stack">Технології</h3>
-                    <div class="tech-labels">
-                        <span>Java 17</span><span>Spring Boot</span><span>PostgreSQL</span><span>Supabase</span><span>Swagger UI</span>
-                    </div>
-                    <br>
-                    <a href="https://github.com" target="_blank" class="btn btn-primary">GitHub Repository &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="project-2" class="project-overlay-page">
-        <button class="close-overlay-btn" onclick="closeProjectModal('project-2')">← Back to Portfolio</button>
-        <div class="overlay-hero" style="background-image: linear-gradient(to bottom, rgba(13,14,16,0.6), #0d0e10), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1400');">
-            <div class="overlay-container">
-                <span class="project-tag">Data Science & Analytics</span>
-                <h2 class="overlay-title">Time-Series Investment Analysis</h2>
-            </div>
-        </div>
-        <div class="overlay-content">
-            <div class="overlay-container grid-layout">
-                <div class="main-info">
-                    <h3 data-ua="Про проєкт" data-en="About Project">Про проєкт</h3>
-                    <p data-ua="Університетська курсова робота, присвячена дослідженню та математичному моделюванню доходності фінансових і інвестиційних активів. Реалізовано очищення даних та побудову прогнозів часових рядів." data-en="University coursework focused on research and mathematical modeling of investment asset yields. Features automated data cleaning and comprehensive time-series predictive modeling.">
-                        Університетська курсова робота, присвячена дослідженню та математичному моделюванню доходності фінансових і інвестиційних активів. Реалізовано очищення даних та побудову прогнозів часових рядів.
-                    </p>
-
-                    <h3 data-ua="Візуалізація трендів" data-en="Data Visualization">Візуалізація трендів</h3>
-                    <div class="video-placeholder">
-                        <div class="video-mock-text" data-ua="[ Місце для динамічного запису роботи Jupyter Notebook / Streamlit ]" data-en="[ Space for Jupyter Notebook / Streamlit screen recording ]">[ Місце для динамічного запису роботи Jupyter Notebook / Streamlit ]</div>
-                    </div>
-
-                    <h3 data-ua="Скриншоти аналітики" data-en="Analytics Plots">Скриншоти аналітики</h3>
-                    <div class="screenshots-gallery">
-                        <div class="screenshot-item" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600');"></div>
-                        <div class="screenshot-item" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600');"></div>
-                    </div>
-                </div>
-                <div class="side-meta">
-                    <h3 data-ua="Технології" data-en="Tech Stack">Технології</h3>
-                    <div class="tech-labels">
-                        <span>Python</span><span>Pandas</span><span>NumPy</span><span>ARIMA</span><span>SARIMAX</span><span>LSTM</span>
-                    </div>
-                    <br>
-                    <a href="https://github.com" target="_blank" class="btn btn-primary">GitHub Repository &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Maria Stepanova. Intelligent Minimalist Design.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html> -->
 
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Марія Степанова | Portfolio</title>
+    <title>Mariia Stepanova | Portfolio</title>
+
+    <link rel="icon" type="image/png" href="images/my_logo_2_wcs.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wdth,wght@60..100,200..900&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
@@ -295,7 +23,11 @@
     </div>
 
     <header class="navbar">
-        <div class="logo">MS<span>.</span></div>
+        <div class="logo">
+            <a href="#home">
+                <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+            </a>
+        </div>
         
         <nav class="desktop-nav">
             <ul class="nav-links">
@@ -304,6 +36,7 @@
                 <li><a href="#projects" class="nav-item" data-ua="Проєкти" data-en="Projects">Проєкти</a></li>
                 <li><a href="#skills" class="nav-item" data-ua="Навички" data-en="Skills">Навички</a></li>
                 <li><a href="#experience" class="nav-item" data-ua="Досвід" data-en="Experience">Досвід</a></li>
+                <li><a href="#education" class="nav-item" data-ua="Освіта" data-en="Education">Освіта</a></li>
                 <li><a href="#contact" class="nav-item" data-ua="Контакти" data-en="Contact">Контакти</a></li>
             </ul>
         </nav>
@@ -325,6 +58,7 @@
             <li><a href="#projects" onclick="toggleMobileMenu()" data-ua="Проєкти" data-en="Projects">Проєкти</a></li>
             <li><a href="#skills" onclick="toggleMobileMenu()" data-ua="Навички" data-en="Skills">Навички</a></li>
             <li><a href="#experience" onclick="toggleMobileMenu()" data-ua="Досвід" data-en="Experience">Досвід</a></li>
+            <li><a href="#education" onclick="toggleMobileMenu()" data-ua="Освіта" data-en="Education">Освіта</a></li>
             <li><a href="#contact" onclick="toggleMobileMenu()" data-ua="Контакти" data-en="Contact">Контакти</a></li>
         </ul>
     </div>
@@ -334,8 +68,10 @@
             <div class="hero-content">
                 <p class="hero-subtitle" data-ua="Портфоліо розробника" data-en="Developer Portfolio">Портфоліо розробника</p>
                 <h1 class="hero-title">Backend Developer <br>& Data Science</h1>
-                <p class="hero-description" data-ua="Проєктування архітектури, створення стабільних сервісів на Java (Spring) та інтелектуальний аналіз даних за допомогою Python." data-en="Designing architectures, building stable Java (Spring) services, and performing smart data analytics with Python.">
-                    Проєктую архітектуру, створення стабільних сервісів на Java (Spring) та інтелектуальний аналіз даних за допомогою Python.
+                <p class="hero-description" 
+                data-ua="Розробка серверної логіки, автоматизація бізнес-процесів за допомогою Java (Spring) та low-code інструментів, а також аналіз даних та побудова прогнозних моделей на Python." 
+                data-en="Developing backend logic, automating business workflows with Java (Spring) and low-code tools, alongside data analytics and predictive modeling using Python.">
+                    Розробка серверної логіки, автоматизація бізнес-процесів за допомогою Java (Spring) та low-code інструментів, а також аналіз даних та побудова прогнозних моделей на Python.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary" data-ua="Дивитись роботи" data-en="View Works">Дивитись роботи</a>
@@ -349,17 +85,20 @@
                 <h2 class="section-title" data-ua="Про мене" data-en="About me">Про мене</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p data-ua="Я студентка факультету інформатики та обчислювальної техніки КПІ ім. Ігоря Сікорського. Поєдную інженерний backend-підхід із математичними моделями прогнозування часових рядів." data-en="I am a student at the Faculty of Informatics and Computer Science, Igor Sikorsky KPI. I combine an engineering backend approach with mathematical time-series forecasting models.">
-                            Я студентка факультету інформатики та обчислювальної техніки КПІ ім. Ігоря Сікорського. Поєдную інженерний backend-підхід із математичними моделями прогнозування часових рядів.
+                        <p data-ua="Я інженер-програміст, яка поєднує класичну розробку з гнучкістю Low-code інструментів та аналітикою даних. Маю понад півтора року практичного досвіду в автоматизації процесів, проєктуванні структур даних та створенні внутрішніх екосистем для оптимізації роботи організацій." 
+                        data-en="I am a software engineer combining traditional backend workflows with low-code adaptability and data analytics. I have over 1.5 years of hands-on experience in process automation, data structuring, and building internal ecosystems to streamline organization workflows.">
+                            Я інженер-програміст, яка поєднує класичну розробку з гнучкістю Low-code інструментів та аналітикою даних. Маю понад півтора року практичного досвіду в автоматизації процесів, проєктуванні структур даних та створенні внутрішніх екосистем для оптимізації роботи організацій.
                         </p>
-                        <p data-ua="Мій фокус — створення чистого, масштабованого коду, оптимізація складних SQL-запитів та впровадження алгоритмів машинного навчання для аналізу фінансових активів." data-en="My focus is creating clean, scalable code, optimizing complex SQL queries, and implementing machine learning algorithms for financial asset analysis.">
-                            Мій фокус — створення чистого, масштабованого коду, оптимізація складних SQL-запитів та впровадження алгоритмів машинного навчання для аналізу фінансових активів.
+
+                        <p data-ua="Мій фокус — проектування логіки застосунків, інтеграція сервісів через API та побудова рішень (як на Java/Spring, так і в екосистемі Google Workspace), що допомагають позбутися рутини. Активно досліджую можливості Generative AI для прискорення розробки та аналізу даних." 
+                        data-en="My focus is application logic design, API integrations, and crafting automated workflows (both in Java/Spring and Google Workspace environments). I actively explore Generative AI capabilities to accelerate development and data operations.">
+                            Мій фокус — проектування логіки застосунків, інтеграція сервісів через API та побудова рішень (як на Java/Spring, так і в екосистемі Google Workspace), що допомагають позбутися рутини. Активно досліджую можливості Generative AI для прискорення розробки та аналізу даних.
                         </p>
                     </div>
                     <div class="about-meta">
-                        <div class="meta-item"><span data-ua="Локація:" data-en="Location:">Локація:</span> <strong>Київ / Черкаси, Україна</strong></div>
-                        <div class="meta-item"><span data-ua="Навчання:" data-en="Education:">Навчання:</span> <strong>ФІОТ, НТУУ "КПІ"</strong></div>
-                        <div class="meta-item"><span data-ua="Профіль:" data-en="Profile:">Профіль:</span> <strong>Junior Java Developer / Data Analyst</strong></div>
+                        <div class="meta-item"><span data-ua="Локація:" data-en="Location:">Локація:</span> <strong>Переяслав, Україна</strong></div>
+                        <div class="meta-item"><span data-ua="Навчання:" data-en="Education:">Навчання:</span> <strong>ФІОТ, НТУУ &quot;КПІ&quot; (2-й курс)</strong></div>
+                        <div class="meta-item"><span data-ua="Профіль:" data-en="Profile:">Профіль:</span> <strong>Software Engineer / Backend Developer</strong></div>
                     </div>
                 </div>
             </div>
@@ -367,14 +106,14 @@
 
         <section id="projects" class="section reveal">
             <div class="container">
-                <h2 class="section-title" data-ua="Обрані проєкти" data-en="Selected Projects">Обрані проєкти</h2>
+                <h2 class="section-title" data-ua="Проєкти" data-en="Projects">Проєкти</h2>
                 <div class="projects-grid">
                     
                     <div class="project-card" onclick="openProjectPage('project-1')">
                         <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800');"></div>
                         <div class="project-card-info">
-                            <span class="project-tag">Java / Spring / SQL</span>
-                            <h3>City Registry & Finmate API</h3>
+                            <span class="project-tag">Google Workspace API / Apps Script / No-code</span>
+                            <h3 data-ua="CRM/ERP для БФ &quot;Запорука&quot;" data-en="CRM/ERP for BF &quot;Zaporuka&quot;">CRM/ERP для БФ &quot;Запорука&quot;</h3>
                             <p data-ua="Відкрити кейс проєкту &rarr;" data-en="Open project case &rarr;">Відкрити кейс проєкту &rarr;</p>
                         </div>
                     </div>
@@ -382,8 +121,26 @@
                     <div class="project-card" onclick="openProjectPage('project-2')">
                         <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800');"></div>
                         <div class="project-card-info">
-                            <span class="project-tag">Python / Data Science</span>
-                            <h3>Time-Series Investment Analysis</h3>
+                            <span class="project-tag">Python / Data Science / ML</span>
+                            <h3 data-ua="Аналіз та прогнозування фінансових активів" data-en="Time-Series Predictive Asset Analysis">Аналіз та прогнозування фінансових активів</h3>
+                            <p data-ua="Відкрити кейс проєкту &rarr;" data-en="Open project case &rarr;">Відкрити кейс проєкту &rarr;</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProjectPage('project-3')">
+                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800');"></div>
+                        <div class="project-card-info">
+                            <span class="project-tag">Java / Spring Boot / Android SDK</span>
+                            <h3 data-ua="Full-stack ToDoList Застосунок" data-en="Full-stack ToDoList Application">Full-stack ToDoList Застосунок</h3>
+                            <p data-ua="Відкрити кейс проєкту &rarr;" data-en="Open project case &rarr;">Відкрити кейс проєкту &rarr;</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProjectPage('project-4')">
+                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800');"></div>
+                        <div class="project-card-info">
+                            <span class="project-tag">C# / WinForms / Data Storage</span>
+                            <h3 data-ua="АІС Готель" data-en="AIS Hotel Management System">АІС Готель</h3>
                             <p data-ua="Відкрити кейс проєкту &rarr;" data-en="Open project case &rarr;">Відкрити кейс проєкту &rarr;</p>
                         </div>
                     </div>
@@ -402,24 +159,28 @@
                             <li>Java Core (OOP, Collections)</li>
                             <li>Spring Framework (Boot, Data)</li>
                             <li>REST API & Swagger UI</li>
-                            <li>PostgreSQL / MySQL / Supabase</li>
+                            <li>Oracle Database / Firebase / Microsoft SQL Server</li>
                         </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Data Science</h3>
                         <ul class="skill-list">
-                            <li>Python (Pandas, NumPy, Matplotlib)</li>
-                            <li>Statistical Modeling & Forecasting</li>
-                            <li>ARIMA / SARIMAX / LSTM models</li>
-                            <li>Data Preprocessing</li>
+                            <li>Python (Pandas, NumPy, Matplotlib, Flask)</li>
+                            <li>Data Analysis & Visualization</li>
+                            <li>Statistical Modeling (ARIMA / SARIMAX / LSTM)</li>
+                            <li>Machine Learning Fundamentals</li>
+                            <li>Generative AI & Prompt Engineering</li>
+                            <li>Jupyter Notebook</li>
                         </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Tools & Cloud</h3>
                         <ul class="skill-list">
-                            <li>Git / GitHub & GitHub Pages</li>
-                            <li>Heroku / Render Deployment</li>
-                            <li>Google Cloud Platform (GCP)</li>
+                            <li>Git / GitHub </li>
+                            <li>Google Workspace & AppSheet</li>
+                            <li>Google Apps Script</li>
+                            <li>REST API Integrations</li>
+                            <li>Netlify / Render</li>
                             <li>Jira / Agile / Scrum</li>
                         </ul>
                     </div>
@@ -429,22 +190,106 @@
 
         <section id="experience" class="section reveal">
             <div class="container">
-                <h2 class="section-title" data-ua="Шлях та досвід" data-en="Experience">Шлях та досвід</h2>
+                <h2 class="section-title" data-ua="Досвід роботи" data-en="Work Experience">Досвід роботи</h2>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="timeline-date">2026</div>
+                        <div class="timeline-date">Липень 2024 — Квітень 2026</div>
                         <div class="timeline-content">
-                            <h4 data-ua="EPAM Systems — Java Fundamentals" data-en="EPAM Systems — Java Fundamentals">EPAM Systems — Java Fundamentals</h4>
-                            <p data-ua="Поглиблене вивчення архітектури Java сервісів, SOLID принципів та написання стабільного серверного коду." data-en="Deep dive into Java service architecture, SOLID principles, and backend server-side development.">Поглиблене вивчення архітектури Java сервісів, SOLID принципів та написання стабільного серверного коду.</p>
+                            <h4 data-ua="UKAP Solutions — Програміст / Low-code Developer" data-en="UKAP Solutions — Programmer / Low-code Developer">UKAP Solutions — Програміст / Low-code Developer</h4>
+                            <p data-ua="Розробка та конфігурація систем CRM | ERP на базі Google Sheets та Google AppSheet. Інтеграція сервісів через API, automation процесів збору та обробки інформації, побудова аналітичних таблиць та дашбордів для оптимізації бізнес-процесів." data-en="Development and configuration of custom CRM | ERP systems based on Google Sheets and Google AppSheet. Integrating cloud services via APIs, automating data collection workflows, and building analytical dashboards to maximize operational efficiency.">
+                                Розробка та конфігурація систем CRM | ERP на базі Google Sheets та Google AppSheet. Інтеграція сервісів через API, автоматизація процесів збору та обробки інформації, побудова аналітичних таблиць та дашбордів для оптимізації бізнес-процесів.
+                            </p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2025 - 2026</div>
-                        <div class="timeline-content">
-                            <h4 data-ua="Академічні та Індивідуальні проєкти" data-en="Academic & Independent Projects">Академічні та Індивідуальні проєкти</h4>
-                            <p data-ua="Розробка баз даних, налаштування CI/CD процесів та деплой сервісів на Render і Supabase. Управління завданнями через Jira." data-en="Database design, CI/CD pipelines setups, and service deployment on Render and Supabase. Project tracking via Jira.">Розробка баз даних, налаштування CI/CD процесів та деплой сервісів на Render і Supabase. Управління завданнями через Jira.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section reveal">
+            <div class="container">
+                <h2 class="section-title" data-ua="Освіта та сертифікати" data-en="Education & Certifications">Освіта та сертифікати</h2>
+                <div class="about-grid education-layout-adjustment">
+                    
+                    <div class="education-academic-column">
+                        <h3 class="education-subtitle" data-ua="Академічна освіта" data-en="Formal Education">Академічна освіта</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024 — Теперішній час (2-й курс)</div>
+                                <div class="timeline-content">
+                                    <h4 data-ua="НТУУ &quot;КПІ ім. Ігоря Сікорського&quot;" data-en="Igor Sikorsky Kyiv Polytechnic Institute">НТУУ &quot;КПІ ім. Ігоря Сікорського&quot;</h4>
+                                    <h5 class="education-major-title" data-ua="Спеціальність: Інженерія програмного забезпечення" data-en="Major: Software Engineering">Спеціальність: Інженерія програмного забезпечення</h5>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2020 — 2024</div>
+                                <div class="timeline-content">
+                                    <h4 data-ua="Фаховий коледж КІУтЗ НАУ" data-en="Vocational College KIUtZ NAU">Фаховий коледж КІУтЗ НАУ</h4>
+                                    <h5 class="education-major-title" data-ua="Спеціальність: Інженерія програмного забезпечення (Диплом з відзнакою)" data-en="Major: Software Engineering (Graduated with honors)">Спеціальність: Інженерія програмного забезпечення (Диплом з відзнакою)</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="education-certificates-column">
+                        <h3 class="certification-block-title" data-ua="Сертифікація" data-en="Certifications">Сертифікація</h3>
+                        
+                        <!-- 1. GoIT -->
+                        <div class="certificate-item-card">
+                            <span class="certificate-meta-label">GoIT // 2023</span>
+                            <strong class="certificate-name">
+                                <a href="files/Mariia_Stepanova_GoIT_Certificate.pdf" target="_blank" class="cert-link link-primary" data-ua="Java Developer Course" data-en="Java Developer Course">Java Developer Course</a>
+                            </strong>
+                            <p class="certificate-description" data-ua="Базовий курс із розробки на Java: вивчення Core Java, ООП, роботи з файловою системою I/O та основ Spring Boot (Spring Data)." data-en="Comprehensive training in Java development, covering Core Java, OOP principles, File I/O, and foundational Spring Boot frameworks."></p>
+                            <div class="cert-skills-wrapper">
+                                <span class="cert-skill-tag">Java Core</span>
+                                <span class="cert-skill-tag">OOP</span>
+                                <span class="cert-skill-tag">Spring Boot</span>
+                                <span class="cert-skill-tag">File I/O</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. IBM -->
+                        <div class="certificate-item-card">
+                            <span class="certificate-meta-label">IBM Cloud / Coursera // 2026</span>
+                            <strong class="certificate-name" data-ua="IBM Generative AI Engineering Professional Certificate (В процесі)" data-en="IBM Generative AI Engineering Professional Certificate (In Progress)">IBM Generative AI Engineering Professional Certificate (В процесі)</strong>
+                            
+                            <p class="certificate-description">
+                                <span data-ua="Серія спеціалізованих курсів з автоматизації та ШІ. Пройдені модулі:" data-en="Specialized course series on automation and AI. Completed modules:">Серія спеціалізованих курсів з автоматизації та ШІ. Пройдені модулі:</span>
+                                <br>
+                                <!-- Посилання на окремі курси -->
+                                <a class="cert-sub-link" href="https://www.coursera.org/account/accomplishments/verify/R12OFEY8OPFV" target="_blank" class="cert-sub-link link-primary">Generative AI: Introduction and Applications</a><br>
+                                <a class="cert-sub-link" href="https://www.coursera.org/account/accomplishments/verify/LDV9LSR9BQVX" target="_blank" class="cert-sub-link link-primary">Generative AI: Prompt Engineering Basics</a><br>
+                                <a class="cert-sub-link" href="https://www.coursera.org/account/accomplishments/verify/5L8DVJHWN7VP" target="_blank" class="cert-sub-link link-primary">Python for Data Science, AI & Development</a><br>
+                                <a class="cert-sub-link" href="https://www.coursera.org/account/accomplishments/verify/GBUZZQKWKS6K" target="_blank" class="cert-sub-link link-primary">Developing AI Applications with Python and Flask</a>
+                            </p>
+
+                            <div class="cert-skills-wrapper">
+                                <span class="cert-skill-tag">Python</span>
+                                <span class="cert-skill-tag">Flask</span>
+                                <span class="cert-skill-tag">REST API</span>
+                                <span class="cert-skill-tag">Pandas</span>
+                                <span class="cert-skill-tag">NumPy</span>
+                                <span class="cert-skill-tag">Unit Testing</span>
+                                <span class="cert-skill-tag">Generative AI</span>
+                                <span class="cert-skill-tag">Prompt Engineering</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. Business Speaking -->
+                        <div class="certificate-item-card last-card">
+                            <span class="certificate-meta-label">Маріупольський державний університет // 2026</span>
+                            <strong class="certificate-name">
+                                <a href="files/business english certificate-mcHmDAJM9wid.pdf" target="_blank" class="cert-link link-primary" data-ua="Business Speaking: Intermediate & Upper Intermediate" data-en="Business Speaking: Intermediate & Upper Intermediate">Business Speaking: Intermediate & Upper Intermediate</a>
+                            </strong>
+                            <p class="certificate-description" data-ua="Сертифікований курс із ділової англійської мови та бізнес-комунікації." data-en="Certified course focusing on professional business English and effective workplace communication."></p>
+                            <div class="cert-skills-wrapper">
+                                <span class="cert-skill-tag">Business English</span>
+                                <span class="cert-skill-tag">Spoken English</span>
+                                <span class="cert-skill-tag">Business Communication</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -454,12 +299,17 @@
                 <h2 class="section-title" data-ua="Контакти" data-en="Contact">Контакти</h2>
                 <div class="contact-grid">
                     <div class="contact-text">
-                        <p data-ua="Завжди відкрита до обговорення Junior Java чи Data Science позицій, стажувань та цікавого співробітництва." data-en="Always open to discuss Junior Java or Data Science positions, internships, and tech collaborations.">
-                            Завжди відкрита до обговорення Junior Java чи Data Science позицій, стажувань та цікавого співробітництва.
+                        <p
+                        data-ua="Відкрита до пропозицій у сферах Backend-розробки (Java / Python), Data Science, Generative AI, автоматизації бізнес-процесів, а також стажувань і цікавих технічних проєктів."
+                        data-en="Open to opportunities in Backend Development (Java / Python), Data Science, Generative AI, business process automation, as well as internships and exciting technical projects.">
+
+                        Відкрита до пропозицій у сферах Backend-розробки (Java / Python), Data Science, Generative AI, автоматизації бізнес-процесів, а також стажувань і цікавих технічних проєктів.
+
                         </p>
                         <div class="contact-details">
-                            <p>Email: <a href="mailto:stepanova.maria.ol@gmail.com">stepanova.maria.ol@gmail.com</a></p>
-                            <p>GitHub: <a href="https://github.com" target="_blank">github.com/maria-stepanova</a></p>
+                            <p>Email: <a href="mailto:stepanovamasha70@gmail.com">stepanovamasha70@gmail.com</a></p>
+                            <p>LinkedIn: <a href="https://www.linkedin.com" class="link-primary" target="_blank">www.linkedin.com/in/mariiastepanova</a></p>
+                            <p>GitHub: <a href="https://github.com" class="link-primary" target="_blank">github.com/maria-stepanova</a></p>
                         </div>
                     </div>
                     <div class="contact-form-block">
@@ -478,7 +328,11 @@
     <div id="project-1" class="project-page-view">
         <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-1')">← Close Project</button>
-            <div class="proj-header-logo">MS<span>.</span></div>
+            <div class="proj-header-logo">
+                <a href="#home" onclick="closeProjectPage('project-1')">
+                    <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+                </a>
+            </div>
         </div>
 
         <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600');">
@@ -538,14 +392,18 @@
         </section>
 
         <footer class="proj-inner-footer">
-            <p>&copy; 2026 MS. Code & Architecture Hub.</p>
+            <p>&copy; 2026 MARIIA STEPANOVA</p>
         </footer>
     </div>
 
     <div id="project-2" class="project-page-view">
         <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-2')">← Close Project</button>
-            <div class="proj-header-logo">MS<span>.</span></div>
+            <div class="proj-header-logo">
+                <a href="#home" onclick="closeProjectPage('project-2')">
+                    <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+                </a>
+            </div>
         </div>
 
         <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600');">
@@ -569,7 +427,7 @@
                         <div class="overlay-tech-labels">
                             <span>Python</span><span>Pandas</span><span>NumPy</span><span>Statsmodels</span><span>Scikit-Learn</span><span>LSTM</span>
                         </div>
-                        <a href="https://github.com" target="_blank" class="proj-git-btn">GitHub Repository &nearrow;</a>
+                        <a href="https://github.com" target="_blank" class="proj-git-btn link-primary">GitHub Repository &nearrow;</a>
                     </div>
                 </div>
             </div>
@@ -598,12 +456,138 @@
         </section>
 
         <footer class="proj-inner-footer">
-            <p>&copy; 2026 MS. Predictive Analytics Unit.</p>
+            <p>&copy; 2026 MARIIA STEPANOVA</p>
+        </footer>
+    </div>
+
+
+    <div id="project-3" class="project-page-view">
+        <div class="project-page-header">
+            <button class="back-to-main-btn" onclick="closeProjectPage('project-3')">← Close Project</button>
+            <div class="proj-header-logo">
+                <a href="#home" onclick="closeProjectPage('project-3')">
+                    <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+                </a>
+            </div>
+        </div>
+
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1600');">
+            <div class="proj-hero-container">
+                <span class="proj-meta-tag">Full-Stack Development // 2025</span>
+                <h1 class="proj-hero-title">Full-Stack ToDoList Application<br>& Cloud Integration</h1>
+            </div>
+        </section>
+
+        <section class="proj-details-section">
+            <div class="proj-container">
+                <div class="proj-info-layout">
+                    <div class="proj-main-desc">
+                        <h2 data-ua="Концепція та технічна реалізація" data-en="Concept & Tech Architecture">Концепція та технічна реалізація</h2>
+                        <p data-ua="Практичний full-stack проєкт розробки кросплатформової системи керування завданнями. Архітектура рішення складається з потужної серверної частини на Java (Spring Boot) та мобільного клієнта на базі Android SDK. Для забезпечення миттєвої синхронізації даних, автентифікації користувачів та збереження стану було інтегровано хмарну платформу Firebase, що дозволило досягти високої відмовостійкості системи." data-en="A robust full-stack project focused on building a cross-platform task management system. The architecture features a powerful Java (Spring Boot) backend paired with a mobile client built via Android SDK. Cloud platform Firebase was integrated to handle instant data synchronization, user authentication, and secure remote storage, ensuring high availability and fault tolerance.">
+                            Практичний full-stack проєкт розробки кросплатформової системи керування завданнями. Архітектура рішення складається з потужної серверної частини на Java (Spring Boot) та мобільного клієнта на базі Android SDK. Для забезпечення миттєвої синхронізації даних, автентифікації користувачів та збереження стану було інтегровано хмарну платформу Firebase, що дозволило досягти високої відмовостійкості системи.
+                        </p>
+                    </div>
+                    <div class="proj-sidebar-tags">
+                        <h3 data-ua="Стек технологій" data-en="Tech Stack">Стек технологій</h3>
+                        <div class="overlay-tech-labels">
+                            <span>Java</span><span>Spring Boot</span><span>Android SDK</span><span>Firebase</span><span>Gradle</span><span>HTML</span>
+                        </div>
+                        <a href="https://github.com/MNJMARIA/ToDoList" target="_blank" class="proj-git-btn link-primary">GitHub Repository &nearrow;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="proj-video-section" data-video-source="false">
+            <div class="proj-container"></div>
+        </section>
+
+        <section class="proj-gallery-section">
+            <div class="proj-container">
+                <h2 class="section-subheading" data-ua="Метрики та архітектура клієнта" data-en="UI Metrics & Architecture">Метрики та архітектура клієнта</h2>
+                <div class="carousel-container">
+                    <button class="carousel-nav prev-btn">&#8592;</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide active-slide" style="background-image: url('images/todolist_photo1.png');"></div>
+                        <div class="carousel-slide next-slide" style="background-image: url('images/todolist_photo2.png');"></div>
+                        <div class="carousel-slide prev-slide" style="background-image: url('images/todolist_photo3.png');"></div>
+                        <div class="carousel-slide prev-slide" style="background-image: url('images/todolist_photo4.png');"></div>
+                    </div>
+                    <button class="carousel-nav next-btn">&#8594;</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="proj-inner-footer">
+            <p>&copy; 2026 MARIIA STEPANOVA</p>
+        </footer>
+    </div>
+
+
+    <div id="project-4" class="project-page-view">
+        <div class="project-page-header">
+            <button class="back-to-main-btn" onclick="closeProjectPage('project-4')">← Close Project</button>
+            <div class="proj-header-logo">
+                <a href="#home" onclick="closeProjectPage('project-4')">
+                    <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+                </a>
+            </div>
+        </div>
+
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600');">
+            <div class="proj-hero-container">
+                <span class="proj-meta-tag">Desktop Application Engineering // 2025</span>
+                <h1 class="proj-hero-title">AIS Hotel Management System</h1>
+            </div>
+        </section>
+
+        <section class="proj-details-section">
+            <div class="proj-container">
+                <div class="proj-info-layout">
+                    <div class="proj-main-desc">
+                        <h2 data-ua="Проектування та файлова архітектура" data-en="Design & Data Infrastructure">Проектування та файлова архітектура</h2>
+                        <p data-ua="Автоматизована інформаційна система (АІС) для оптимізації процесів адміністрування, бронювання та обліку номерного фонду готелів. Проєкт реалізовано як настільний десктоп-застосунок в середовищі Visual Studio з використанням технології WinForms для побудови чіткого та зрозумілого інтерфейсу користувача. Особливістю архітектури є кастомне файлове сховище даних (File-based Data Storage) для надійної локальної збереженості інформації." data-en="An Automated Information System (AIS) customized to optimize administration, booking pipelines, and room inventory metrics for hospitality businesses. Developed as a clean desktop application within Visual Studio using WinForms for intuitive UI orchestration. The infrastructure implements a custom, reliable file-based data storage model for secure local persistence and rapid information access.">
+                            Автоматизована інформаційна система (АІС) для оптимізації процесів адміністрування, бронювання та обліку номерного фонду готелів. Проєкт реалізовано як десктоп-застосунок в середовищі Visual Studio з використанням технології WinForms для побудови чіткого та зрозумілого інтерфейсу користувача. Особливістю архітектури є файлове сховище даних (File-based Data Storage) для локального збереження інформації.
+                        </p>
+                    </div>
+                    <div class="proj-sidebar-tags">
+                        <h3 data-ua="Стек технологій" data-en="Tech Stack">Стек технологій</h3>
+                        <div class="overlay-tech-labels">
+                            <span>C#</span><span>Visual Studio</span><span>WinForms</span><span>File-based Storage</span>
+                        </div>
+                        <a href="https://github.com/MNJMARIA/ais_hotel" target="_blank" class="proj-git-btn link-primary">GitHub Repository &nearrow;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="proj-video-section" data-video-source="false">
+            <div class="proj-container"></div>
+        </section>
+
+        <section class="proj-gallery-section">
+            <div class="proj-container">
+                <h2 class="section-subheading" data-ua="Інтерфейс користувача та структури" data-en="User Interface & Systems">Інтерфейс користувача та структури</h2>
+                <div class="carousel-container">
+                    <button class="carousel-nav prev-btn">&#8592;</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide active-slide" style="background-image: url('images/ais_hotel_login.png');"></div>
+                        <div class="carousel-slide next-slide" style="background-image: url('images/ais_hotel_room_selection.png');"></div>
+                        <div class="carousel-slide prev-slide" style="background-image: url('images/ais_hotel_guest_dashboard.png');"></div>
+                        <div class="carousel-slide prev-slide" style="background-image: url('images/ais_hotel_booking_form.png');"></div>
+                    </div>
+                    <button class="carousel-nav next-btn">&#8594;</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="proj-inner-footer">
+            <p>&copy; 2026 MARIIA STEPANOVA</p>
         </footer>
     </div>
 
     <footer>
-        <p>&copy; 2026 Maria Stepanova. Intelligent Minimalist Design.</p>
+        <p>&copy; 2026 MARIIA STEPANOVA</p>
     </footer>
 
     <script src="script.js"></script>
