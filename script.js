@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const backBtn = document.getElementById('back-project-btn');
+
+    backBtn.addEventListener('click', () => {
+
+        const activeProject =
+            document.querySelector('.project-page-view.active');
+
+        if (activeProject) {
+            closeProjectPage(activeProject.id);
+        }
+
+    });
     
     // ==========================================
     // ДИНАМІЧНИЙ ЛІХТАРИК ЗА МИШКОЮ (ЗГАСАННЯ ТА НАРОСТАННЯ)
@@ -89,22 +101,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Запускаємо карусель для кожного блоку окремо
     document.querySelectorAll('.carousel-container').forEach(setupsCarousel);
+    document.querySelectorAll('.project-card').forEach(card => {
 
+        card.addEventListener('click', () => {
+
+            openProjectPage(card.dataset.project);
+
+        });
+
+    });
     // ==========================================
     // МИТТЄВИЙ ПЕРЕКЛАД МОВИ (UA / EN)
     // ==========================================
     const langToggleBtn = document.getElementById('lang-toggle');
-    let currentLang = 'ua';
+    // let currentLang = 'ua';
+    let currentLang = localStorage.getItem('lang') || 'ua';
     const translatableElements = document.querySelectorAll('[data-ua]');
 
-    langToggleBtn.addEventListener('click', () => {
-        currentLang = (currentLang === 'ua') ? 'en' : 'ua';
-        langToggleBtn.textContent = (currentLang === 'ua') ? 'EN' : 'UA';
+    function applyLanguage() {
+        langToggleBtn.textContent = currentLang === 'ua' ? 'EN' : 'UA';
 
         translatableElements.forEach(el => {
-            el.textContent = el.getAttribute(`data-${currentLang}`);
-            if(el.placeholder) el.placeholder = el.getAttribute(`data-${currentLang}`);
+            const value = el.getAttribute(`data-${currentLang}`);
+            if (!value) return;
+
+            if (
+                el.tagName === 'INPUT' ||
+                el.tagName === 'TEXTAREA'
+            ) {
+                el.placeholder = value;
+            } else {
+                el.textContent = value;
+            }
         });
+    }
+
+    applyLanguage();
+
+    // langToggleBtn.addEventListener('click', () => {
+    //     currentLang = (currentLang === 'ua') ? 'en' : 'ua';
+    //     langToggleBtn.textContent = (currentLang === 'ua') ? 'EN' : 'UA';
+
+    //     translatableElements.forEach(el => {
+    //         el.textContent = el.getAttribute(`data-${currentLang}`);
+    //         if(el.placeholder) el.placeholder = el.getAttribute(`data-${currentLang}`);
+    //     });
+    // });
+    langToggleBtn.addEventListener('click', () => {
+
+        currentLang = currentLang === 'ua'
+            ? 'en'
+            : 'ua';
+
+        localStorage.setItem('lang', currentLang);
+
+        applyLanguage();
+
     });
 });
 
@@ -114,9 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
 function openProjectPage(pageId) {
     const page = document.getElementById(pageId);
     if (page) {
+        // page.classList.add('active');
+        // document.body.style.overflow = 'hidden'; // Фіксуємо задній фон
         page.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Фіксуємо задній фон
-        
+
+        document.querySelector('.desktop-nav').style.display = 'none';
+
+        document.getElementById('back-project-btn').style.display =
+            'inline-block';
+
+        document.body.classList.add('project-open');
+        document.body.style.overflow = 'hidden';
         // Додаємо запис в історію браузера, змінюючи хеш (наприклад, #view-project-1)
         if (window.location.hash !== `#view-${pageId}`) {
             history.pushState({ projectPageId: pageId }, '', `#view-${pageId}`);
@@ -127,9 +187,17 @@ function openProjectPage(pageId) {
 function closeProjectPage(pageId) {
     const page = document.getElementById(pageId);
     if (page) {
+        // page.classList.remove('active');
+        // document.body.style.overflow = ''; // Повертаємо скрол основного сайту
         page.classList.remove('active');
-        document.body.style.overflow = ''; // Повертаємо скрол основного сайту
-        
+
+        document.querySelector('.desktop-nav').style.display = '';
+
+        document.getElementById('back-project-btn').style.display =
+            'none';
+
+        document.body.classList.remove('project-open');
+        document.body.style.overflow = '';
         // Якщо користувач натиснув хрестик в інтерфейсі, очищуємо хеш до секції проєктів
         if (window.location.hash.startsWith('#view-')) {
             history.pushState(null, '', '#projects');
@@ -143,13 +211,28 @@ window.addEventListener('popstate', (event) => {
     document.querySelectorAll('.project-page-view').forEach(page => {
         page.classList.remove('active');
     });
-    document.body.style.overflow = '';
+
+    document.querySelector('.desktop-nav').style.display = '';
+
+    document.getElementById('back-project-btn').style.display =
+        'none';
+    // document.body.style.overflow = '';
+    document.body.classList.remove('project-open');
 
     // Якщо в історії браузера збережено стан конкретного проєкту — відкриваємо його
     if (event.state && event.state.projectPageId) {
         const activePage = document.getElementById(event.state.projectPageId);
         if (activePage) {
+            // activePage.classList.add('active');
+            // document.body.style.overflow = 'hidden';
             activePage.classList.add('active');
+
+            document.querySelector('.desktop-nav').style.display = 'none';
+
+            document.getElementById('back-project-btn').style.display =
+                'inline-block';
+
+            document.body.classList.add('project-open');
             document.body.style.overflow = 'hidden';
         }
     } else if (window.location.hash.startsWith('#view-')) {

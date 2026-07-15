@@ -42,6 +42,7 @@
         </nav>
 
         <div class="nav-right-block">
+            <button id="back-project-btn" class="back-to-main-btn" style="display:none;">← Back</button>
             <button id="lang-toggle" class="lang-btn">EN</button>
             
             <button id="mobile-menu-trigger" class="menu-trigger">
@@ -109,16 +110,16 @@
                 <h2 class="section-title" data-ua="Проєкти" data-en="Projects">Проєкти</h2>
                 <div class="projects-grid">
                     
-                    <div class="project-card" onclick="openProjectPage('project-1')">
-                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800');"></div>
+                    <div class="project-card" data-project="project-1">
+                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url(images/crm_zaporuka.avif);"></div>
                         <div class="project-card-info">
-                            <span class="project-tag">Google Workspace API / Apps Script / No-code</span>
+                            <span class="project-tag">Google Workspace API / Apps Script / Low-code</span>
                             <h3 data-ua="CRM/ERP для БФ &quot;Запорука&quot;" data-en="CRM/ERP for BF &quot;Zaporuka&quot;">CRM/ERP для БФ &quot;Запорука&quot;</h3>
                             <p data-ua="Відкрити кейс проєкту &rarr;" data-en="Open project case &rarr;">Відкрити кейс проєкту &rarr;</p>
                         </div>
                     </div>
 
-                    <div class="project-card" onclick="openProjectPage('project-2')">
+                    <div class="project-card" data-project="project-2">
                         <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800');"></div>
                         <div class="project-card-info">
                             <span class="project-tag">Python / Data Science / ML</span>
@@ -127,8 +128,8 @@
                         </div>
                     </div>
 
-                    <div class="project-card" onclick="openProjectPage('project-3')">
-                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800');"></div>
+                    <div class="project-card" data-project="project-3">
+                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url(images/todolist_logo.png);"></div>
                         <div class="project-card-info">
                             <span class="project-tag">Java / Spring Boot / Android SDK</span>
                             <h3 data-ua="Full-stack ToDoList Застосунок" data-en="Full-stack ToDoList Application">Full-stack ToDoList Застосунок</h3>
@@ -136,8 +137,8 @@
                         </div>
                     </div>
 
-                    <div class="project-card" onclick="openProjectPage('project-4')">
-                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800');"></div>
+                    <div class="project-card" data-project="project-4">
+                        <div class="project-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), #050506), url(images/loginRolePhoto1.jpg);"></div>
                         <div class="project-card-info">
                             <span class="project-tag">C# / WinForms / Data Storage</span>
                             <h3 data-ua="АІС Готель" data-en="AIS Hotel Management System">АІС Готель</h3>
@@ -326,19 +327,19 @@
     </main>
 
     <div id="project-1" class="project-page-view">
-        <div class="project-page-header">
+        <!-- <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-1')">← Close Project</button>
             <div class="proj-header-logo">
                 <a href="#home" onclick="closeProjectPage('project-1')">
                     <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
                 </a>
             </div>
-        </div>
+        </div> -->
 
-        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600');">
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url(images/crm_zaporuka.avif);">
             <div class="proj-hero-container">
-                <span class="proj-meta-tag">Case Study // 2026</span>
-                <h1 class="proj-hero-title">City Registry &<br>Finmate API Architecture</h1>
+                <span class="proj-meta-tag">Work Case // 2024</span>
+                <h1 class="proj-hero-title">CRM/ERP для БФ &quot;Запорука&quot;</h1>
             </div>
         </section>
 
@@ -346,17 +347,24 @@
             <div class="proj-container">
                 <div class="proj-info-layout">
                     <div class="proj-main-desc">
-                        <h2 data-ua="Про концепцію та завдання" data-en="Concept & Challenge">Про концепцію та завдання</h2>
-                        <p data-ua="Комплексна інженерна розробка відмовостійкої серверної архітектури міського реєстру. Завдання полягало у ліквідації затримок при складних вибірках SQL, автоматичному структуруванні документації за допомогою Swagger та організації безпечної реляційної екосистеми з Supabase." data-en="Comprehensive engineering design of a fault-tolerant server architecture for the city registry. The challenge was to eliminate query latencies during complex SQL selections, automate endpoint structures via Swagger, and orchestrate a secure relational eco-system with Supabase.">
-                            Комплексна інженерна розробка відмовостійкої серверної архітектури міського реєстру. Завдання полягало у ліквідації затримок при складних вибірках SQL, автоматичному структуруванні документації за допомогою Swagger та організації безпечної реляційної екосистеми з Supabase.
+                        <h2
+                            data-ua="Про проєкт"
+                            data-en="About the Project">
+                            Про проєкт
+                        </h2>
+
+                        <p
+                        data-ua="CRM/ERP-система, розроблена для благодійного фонду «Запорука», з метою автоматизації внутрішніх бізнес-процесів та централізації роботи з даними. Рішення побудоване на базі Google Workspace із використанням Google Sheets, AppSheet та Google Apps Script, що дозволило створити єдину інформаційну систему без необхідності розробки окремого вебзастосунку. У межах проєкту було реалізовано автоматизацію обробки даних, інтеграцію між сервісами Google, генерацію документів, систему ролей, звітність та інструменти для щоденної роботи співробітників."
+                        data-en="A custom CRM/ERP system developed for the 'Zaporuka' Charity Foundation to automate internal business processes and centralize organizational data. The solution was built on the Google Workspace ecosystem using Google Sheets, AppSheet, and Google Apps Script, enabling a complete business management platform without developing a separate web application. The project includes workflow automation, Google service integrations, document generation, role-based access, reporting, and operational tools that streamline everyday activities for foundation staff.">
+                        CRM/ERP-система, розроблена для благодійного фонду «Запорука», з метою автоматизації внутрішніх бізнес-процесів та централізації роботи з даними. Рішення побудоване на базі Google Workspace із використанням Google Sheets, AppSheet та Google Apps Script, що дозволило створити єдину інформаційну систему без необхідності розробки окремого вебзастосунку. У межах проєкту було реалізовано автоматизацію обробки даних, інтеграцію між сервісами Google, генерацію документів, систему ролей, звітність та інструменти для щоденної роботи співробітників.
                         </p>
                     </div>
                     <div class="proj-sidebar-tags">
                         <h3 data-ua="Стек технологій" data-en="Tech Stack">Стек технологій</h3>
                         <div class="overlay-tech-labels">
-                            <span>Java 17</span><span>Spring Boot</span><span>PostgreSQL</span><span>Supabase Cloud</span><span>Swagger UI</span><span>Git</span>
+                            <span>Google Workspace</span><span>AppScript</span><span>Low-code</span>
                         </div>
-                        <a href="https://github.com" target="_blank" class="proj-git-btn">GitHub Repository &nearrow;</a>
+                        <a href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/MNJMARIA/finmate-api-docs/refs/heads/main/mariia-709-transaction-service-api-1.0.0-oas3.1-unresolved.yaml#/" target="_blank" class="proj-git-btn">Swagger Documentation &nearrow;</a>
                     </div>
                 </div>
             </div>
@@ -364,7 +372,7 @@
 
         <section class="proj-video-section" data-video-source="false">
             <div class="proj-container">
-                <h2 class="section-subheading" data-ua="Відео демонстрація роботи API" data-en="Video Walkthrough & API Demo">Відео демонстрація роботи API</h2>
+                <h2 class="section-subheading" data-ua="Демонстрація API" data-en="API Demonstration">Демонстрація API</h2>
                 <div class="proj-video-wrapper">
                     <div class="video-mock-box">
                         <div class="play-icon-shape"></div>
@@ -374,9 +382,88 @@
             </div>
         </section>
 
-        <section class="proj-gallery-section">
+        <section class="proj-details-section">
             <div class="proj-container">
-                <h2 class="section-subheading" data-ua="Інтерфейс та структура даних" data-en="Interface & Data Blueprints">Інтерфейс та структура даних</h2>
+
+                <div class="proj-info-layout">
+
+                    <div class="proj-main-desc">
+
+                        <h2
+                            data-ua="Основні можливості"
+                            data-en="Key Features">
+                            Основні можливості
+                        </h2>
+
+                        <ul class="project-feature-list">
+
+                            <li
+                                data-ua="Єдина CRM/ERP-система для централізованого управління даними фонду"
+                                data-en="Unified CRM/ERP system for centralized foundation data management">
+                                Єдина CRM/ERP-система для централізованого управління даними фонду
+                            </li>
+
+                            <li
+                                data-ua="Автоматизація внутрішніх бізнес-процесів та рутинних операцій"
+                                data-en="Automation of internal business processes and repetitive workflows">
+                                Автоматизація внутрішніх бізнес-процесів та рутинних операцій
+                            </li>
+
+                            <li
+                                data-ua="Інтеграція сервісів Google Workspace"
+                                data-en="Google Workspace integrations">
+                                Інтеграція сервісів Google Workspace
+                            </li>
+
+                            <li
+                                data-ua="Автоматичне створення документів та звітності"
+                                data-en="Automated document and report generation">
+                                Автоматичне створення документів та звітності
+                            </li>
+
+                            <li
+                                data-ua="Рольова модель доступу"
+                                data-en="Role-based access control">
+                                Рольова модель доступу
+                            </li>
+
+                            <li
+                                data-ua="Аналітичні дашборди та моніторинг"
+                                data-en="Analytics dashboards and monitoring">
+                                Аналітичні дашборди та моніторинг
+                            </li>
+
+                        </ul>
+
+                    </div>
+<!-- 
+                    <div class="proj-sidebar-tags">
+
+                        <h3
+                            data-ua="Ключові переваги"
+                            data-en="Highlights">
+                            Ключові переваги
+                        </h3>
+
+                        <div class="overlay-tech-labels">
+                            <span>Automation</span>
+                            <span>CRM</span>
+                            <span>ERP</span>
+                            <span>Google APIs</span>
+                            <span>Dashboards</span>
+                            <span>Reporting</span>
+                        </div>
+
+                    </div> -->
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- <section class="proj-gallery-section">
+            <div class="proj-container">
+                <h2 class="section-subheading" data-ua="Документація API" data-en="API Documentation & Architecture">Документація API</h2>
                 
                 <div class="carousel-container">
                     <button class="carousel-nav prev-btn">&#8592;</button>
@@ -389,7 +476,7 @@
                 </div>
                 
             </div>
-        </section>
+        </section> -->
 
         <footer class="proj-inner-footer">
             <p>&copy; 2026 MARIIA STEPANOVA</p>
@@ -397,14 +484,14 @@
     </div>
 
     <div id="project-2" class="project-page-view">
-        <div class="project-page-header">
+        <!-- <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-2')">← Close Project</button>
             <div class="proj-header-logo">
                 <a href="#home" onclick="closeProjectPage('project-2')">
                     <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
                 </a>
             </div>
-        </div>
+        </div> -->
 
         <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600');">
             <div class="proj-hero-container">
@@ -462,16 +549,16 @@
 
 
     <div id="project-3" class="project-page-view">
-        <div class="project-page-header">
+        <!-- <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-3')">← Close Project</button>
             <div class="proj-header-logo">
                 <a href="#home" onclick="closeProjectPage('project-3')">
                     <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
                 </a>
             </div>
-        </div>
+        </div> -->
 
-        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1600');">
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url(images/todolist_logo.png);">
             <div class="proj-hero-container">
                 <span class="proj-meta-tag">Full-Stack Development // 2025</span>
                 <h1 class="proj-hero-title">Full-Stack ToDoList Application<br>& Cloud Integration</h1>
@@ -525,16 +612,16 @@
 
 
     <div id="project-4" class="project-page-view">
-        <div class="project-page-header">
+        <!-- <div class="project-page-header">
             <button class="back-to-main-btn" onclick="closeProjectPage('project-4')">← Close Project</button>
             <div class="proj-header-logo">
                 <a href="#home" onclick="closeProjectPage('project-4')">
                     <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
                 </a>
             </div>
-        </div>
+        </div> -->
 
-        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600');">
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url(images/loginRolePhoto1.jpg);">
             <div class="proj-hero-container">
                 <span class="proj-meta-tag">Desktop Application Engineering // 2025</span>
                 <h1 class="proj-hero-title">AIS Hotel Management System</h1>
@@ -580,6 +667,80 @@
                 </div>
             </div>
         </section>
+
+        <footer class="proj-inner-footer">
+            <p>&copy; 2026 MARIIA STEPANOVA</p>
+        </footer>
+    </div>
+
+    <div id="project-6" class="project-page-view">
+        <!-- <div class="project-page-header">
+            <button class="back-to-main-btn" onclick="closeProjectPage('project-1')">← Close Project</button>
+            <div class="proj-header-logo">
+                <a href="#home" onclick="closeProjectPage('project-1')">
+                    <img src="images/my_logo_2_wcs2.png" alt="Марія Степанова - Логотип">
+                </a>
+            </div>
+        </div> -->
+
+        <section class="proj-hero" style="background-image: linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600');">
+            <div class="proj-hero-container">
+                <span class="proj-meta-tag">Case Study // 2026</span>
+                <h1 class="proj-hero-title">FinMate Transaction API</h1>
+            </div>
+        </section>
+
+        <section class="proj-details-section">
+            <div class="proj-container">
+                <div class="proj-info-layout">
+                    <div class="proj-main-desc">
+                        <h2 data-ua="Про проєкт" data-en="About the Project">
+                            Про проєкт
+                        </h2>
+                        <p
+                        data-ua="FinMate — це мій довгостроковий pet-проєкт, який я поступово розвиваю у повноцінний персональний фінансовий застосунок. Наразі реалізовано окремий REST API-сервіс для управління транзакціями, що є основою майбутньої серверної архітектури. Проєкт розробляється з акцентом на чисту архітектуру, масштабованість та поступове розширення функціоналу — від CRUD-операцій до аналітики, категоризації витрат, бюджетування та AI-функцій."
+                        data-en="FinMate is my long-term personal side project that I am gradually evolving into a full-featured personal finance application. At the current stage, the project includes a dedicated REST API for transaction management, serving as the foundation of the future backend architecture. The application is being designed with scalability, maintainability, and clean architecture in mind, with plans to expand from basic CRUD operations to budgeting, analytics, expense categorization, and AI-powered financial features.">
+                        </p>
+                    </div>
+                    <div class="proj-sidebar-tags">
+                        <h3 data-ua="Стек технологій" data-en="Tech Stack">Стек технологій</h3>
+                        <div class="overlay-tech-labels">
+                            <span>Swagger UI</span><span>Git</span>
+                        </div>
+                        <a href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/MNJMARIA/finmate-api-docs/refs/heads/main/mariia-709-transaction-service-api-1.0.0-oas3.1-unresolved.yaml#/" target="_blank" class="proj-git-btn">Swagger Documentation &nearrow;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="proj-video-section" data-video-source="false">
+            <div class="proj-container">
+                <h2 class="section-subheading" data-ua="Демонстрація API" data-en="API Demonstration">Демонстрація API</h2>
+                <div class="proj-video-wrapper">
+                    <div class="video-mock-box">
+                        <div class="play-icon-shape"></div>
+                        <p data-ua="[ Клацніть для відтворення демонстраційного запису розгортання та Swagger ендпоінтів ]" data-en="[ Click to play screen recording of endpoints deployment & functionality ]">[ Клацніть для відтворення демонстраційного запису розгортання та Swagger ендпоінтів ]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="proj-gallery-section">
+            <div class="proj-container">
+                <h2 class="section-subheading" data-ua="Документація API" data-en="API Documentation & Architecture">Документація API</h2>
+                
+                <div class="carousel-container">
+                    <button class="carousel-nav prev-btn">&#8592;</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide active-slide" style="background-image: url('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=800');"></div>
+                        <div class="carousel-slide next-slide" style="background-image: url('https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800');"></div>
+                        <div class="carousel-slide prev-slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800');"></div>
+                    </div>
+                    <button class="carousel-nav next-btn">&#8594;</button>
+                </div>
+                
+            </div>
+        </section> -->
 
         <footer class="proj-inner-footer">
             <p>&copy; 2026 MARIIA STEPANOVA</p>
