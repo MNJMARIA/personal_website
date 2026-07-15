@@ -320,3 +320,52 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const data = {
+        name: contactForm.name.value,
+        email: contactForm.email.value,
+        message: contactForm.message.value
+    };
+
+    try {
+
+        const response = await fetch("http://localhost:8080/api/contact", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(data)
+
+        });
+
+        if(response.ok){
+
+            alert("Повідомлення успішно надіслано!");
+
+            contactForm.reset();
+
+        }else{
+
+            alert("Помилка при відправці.");
+
+        }
+
+    } catch(err){
+
+        console.error(err);
+
+        alert("Не вдалося підключитися до сервера.");
+
+    }
+
+});
