@@ -175,8 +175,9 @@ function openProjectPage(pageId) {
         document.getElementById('back-project-btn').style.display =
             'inline-block';
 
-        document.body.classList.add('project-open');
-        document.body.style.overflow = 'hidden';
+        // document.body.classList.add('project-open');
+        // document.body.style.overflow = 'hidden';
+        lockScroll()
         // Додаємо запис в історію браузера, змінюючи хеш (наприклад, #view-project-1)
         if (window.location.hash !== `#view-${pageId}`) {
             history.pushState({ projectPageId: pageId }, '', `#view-${pageId}`);
@@ -196,8 +197,9 @@ function closeProjectPage(pageId) {
         document.getElementById('back-project-btn').style.display =
             'none';
 
-        document.body.classList.remove('project-open');
-        document.body.style.overflow = '';
+        // document.body.classList.remove('project-open');
+        // document.body.style.overflow = '';
+        unlockScroll()
         // Якщо користувач натиснув хрестик в інтерфейсі, очищуємо хеш до секції проєктів
         if (window.location.hash.startsWith('#view-')) {
             history.pushState(null, '', '#projects');
@@ -216,8 +218,9 @@ window.addEventListener('popstate', (event) => {
 
     document.getElementById('back-project-btn').style.display =
         'none';
+    // document.body.classList.remove('project-open');
     // document.body.style.overflow = '';
-    document.body.classList.remove('project-open');
+    unlockScroll()
 
     // Якщо в історії браузера збережено стан конкретного проєкту — відкриваємо його
     if (event.state && event.state.projectPageId) {
@@ -232,8 +235,9 @@ window.addEventListener('popstate', (event) => {
             document.getElementById('back-project-btn').style.display =
                 'inline-block';
 
-            document.body.classList.add('project-open');
-            document.body.style.overflow = 'hidden';
+            // document.body.classList.add('project-open');
+            // document.body.style.overflow = 'hidden';
+            lockScroll()
         }
     } else if (window.location.hash.startsWith('#view-')) {
         // Альтернативна перевірка за поточним хешем URL, якщо state порожній
@@ -245,6 +249,16 @@ window.addEventListener('popstate', (event) => {
         }
     }
 });
+
+function lockScroll() {
+    document.body.classList.add('project-open');
+    document.body.style.overflow = 'hidden';
+}
+
+function unlockScroll() {
+    document.body.classList.remove('project-open');
+    document.body.style.overflow = '';
+}
 
 // Перевірка при початковому завантаженні сторінки (на випадок, якщо користувач оновив сторінку прямо всередині кейсу)
 window.addEventListener('load', () => {
