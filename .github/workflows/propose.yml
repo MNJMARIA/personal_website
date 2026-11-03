@@ -1,0 +1,28 @@
+name: Propose new projects
+
+# Шукає ваші репозиторії з темою "portfolio" і відкриває Pull Request
+# "Додати на сайт". Merge = опублікувати, Close = відхилити.
+
+on:
+  schedule:
+    - cron: "11 */3 * * *"   # кожні 3 години
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: propose
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Open pull requests for new portfolio repositories
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/propose_projects.py

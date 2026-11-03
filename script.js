@@ -101,27 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Запускаємо карусель для кожного блоку окремо
     document.querySelectorAll('.carousel-container').forEach(setupsCarousel);
-    document.querySelectorAll('.project-card').forEach(card => {
-
-        card.addEventListener('click', () => {
-
-            openProjectPage(card.dataset.project);
-
-        });
-
-    });
+    // Картки проєктів і їхні сторінки створює projects.js (він сам вішає обробники кліку)
+    window.setupCarousel = setupsCarousel;
     // ==========================================
     // МИТТЄВИЙ ПЕРЕКЛАД МОВИ (UA / EN)
     // ==========================================
     const langToggleBtn = document.getElementById('lang-toggle');
     // let currentLang = 'ua';
     let currentLang = localStorage.getItem('lang') || 'ua';
-    const translatableElements = document.querySelectorAll('[data-ua]');
 
     function applyLanguage() {
         langToggleBtn.textContent = currentLang === 'ua' ? 'EN' : 'UA';
 
-        translatableElements.forEach(el => {
+        // елементи шукаємо щоразу, бо проєкти додаються на сторінку динамічно
+        document.querySelectorAll('[data-ua]').forEach(el => {
             const value = el.getAttribute(`data-${currentLang}`);
             if (!value) return;
 
@@ -137,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     applyLanguage();
+    window.applyLanguage = applyLanguage;
 
     // langToggleBtn.addEventListener('click', () => {
     //     currentLang = (currentLang === 'ua') ? 'en' : 'ua';

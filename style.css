@@ -1066,3 +1066,40 @@ footer {
 body.project-open .desktop-nav{
     display:none;
 }
+/* ========================================== */
+/* ПРОЄКТИ З JSON: дати, короткий опис, статус */
+/* ========================================== */
+.projects-status { grid-column: 1 / -1; color: var(--text-muted); font-size: 16px; padding: 40px 0; }
+.project-card:focus-visible { outline: 1px solid var(--text-white); outline-offset: 4px; }
+.project-card-summary { font-size: 15px; line-height: 1.6; color: var(--text-normal); margin: 0 0 14px 0; }
+.project-dates { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin: 0 0 18px 0; }
+.project-card-cta { font-size: 14px; color: var(--text-white); }
+.proj-main-desc p + p { margin-top: 18px; }
+.proj-main-desc h2 ~ h2 { margin-top: 50px; }
+
+/* ========================================== */
+/* АДМІНКА (видима лише після входу з токеном) */
+/* ========================================== */
+.admin-toolbar { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin: -10px 0 40px 0; }
+.admin-add { border: none; cursor: pointer; font-family: inherit; }
+.admin-logout { background: none; border: none; color: var(--text-muted); font-family: inherit; font-size: 13px; cursor: pointer; text-decoration: underline; }
+.admin-logout:hover { color: var(--text-white); }
+.admin-overlay { position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,.75); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 6vh 16px; }
+.admin-modal { width: 100%; max-width: 620px; background: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; }
+.admin-modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.admin-modal-head h3 { color: var(--text-white); font-size: 24px; }
+.admin-close { background: none; border: none; color: var(--text-muted); font-size: 32px; line-height: 1; cursor: pointer; }
+.admin-close:hover { color: var(--text-white); }
+.admin-form { display: flex; flex-direction: column; gap: 16px; }
+.admin-form label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.admin-form input, .admin-form textarea { background: var(--bg-pure-black); border: 1px solid var(--border-color); color: var(--text-white); font-family: inherit; font-size: 16px; padding: 12px 14px; text-transform: none; letter-spacing: 0; }
+.admin-form input:focus, .admin-form textarea:focus { outline: none; border-color: var(--text-white); }
+.admin-form input[type=file] { font-size: 14px; color: var(--text-normal); }
+.admin-hint { font-size: 14px; line-height: 1.6; color: var(--text-normal); }
+.admin-hint a { color: var(--text-white); }
+.admin-status { min-height: 20px; font-size: 14px; color: var(--text-normal); }
+.admin-actions { display: flex; gap: 12px; align-items: center; }
+.admin-actions .btn { border: none; cursor: pointer; font-family: inherit; margin-left: 0; }
+.admin-form button[disabled] { opacity: .5; cursor: wait; }
+.admin-toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); z-index: 3100; max-width: 90vw; background: var(--text-white); color: var(--bg-pure-black); padding: 14px 22px; font-size: 14px; }
+.admin-toast.error { background: #ff6b6b; }
