@@ -92,6 +92,46 @@ def truncate(text, limit):
     return (cut[:space] if space > 0 else cut).rstrip(" ,;:-") + "…"
 
 
+BADGE_HINTS = (
+    "shields.io", "badgen.net", "badge.fury.io", "forthebadge.com", "codecov.io", "coveralls.io",
+    "travis-ci", "circleci.com", "sonarcloud.io", "snyk.io", "codacy.com", "visitor-badge",
+    "hits.seeyoufarm", "star-history", "komarev.com", "badge", "/actions/workflows/",
+)
+MAX_GALLERY = 8
+
+
+def readme_images(readme, repo):
+    """Абсолютні посилання на картинки з README (без бейджів), у порядку появи."""
+    full = repo["full_name"]
+    branch = repo.get("default_branch") or "main"
+    text = re.sub(r"<!--.*?-->", "", readme or "", flags=re.S)
+    text = re.sub(r"```.*?```", "", text, flags=re.S)
+    found = []
+    for m in re.finditer(r"!\[[^\]]*\]\(\s*<?([^)\s>]+)>?(?:\s+[\"'][^\"']*[\"'])?\s*\)", text):
+        found.append((m.start(), m.group(1)))
+    for m in re.finditer(r"<img\b[^>]*?\bsrc\s*=\s*[\"']([^\"']+)[\"']", text, flags=re.I):
+        found.append((m.start(), m.group(1)))
+    urls = []
+    for _, raw in sorted(found):
+        url = raw.strip()
+        if not url or url.startswith(("data:", "#", "..")):
+            continue
+        if re.match(r"https?://github\.com/[^/]+/[^/]+/blob/", url):
+            url = re.sub(r"^https?://github\.com/([^/]+/[^/]+)/blob/", r"https://raw.githubusercontent.com/\1/", url)
+            url = url.split("?")[0]
+        elif not re.match(r"https?://", url):
+            if re.match(r"[a-z][a-z0-9+.-]*:", url, flags=re.I):
+                continue
+            path = url.split("?")[0].split("#")[0].lstrip("./").lstrip("/")
+            url = f"https://raw.githubusercontent.com/{full}/{branch}/{path}"
+        if any(h in url.lower() for h in BADGE_HINTS):
+            continue
+        url = url.replace(" ", "%20")
+        if url not in urls:
+            urls.append(url)
+    return urls[: MAX_GALLERY + 1]
+
+
 def pretty_title(name):
     title = re.sub(r"[-_]+", " ", name).strip()
     return title[:1].upper() + title[1:] if title.islower() else title
@@ -121,6 +161,7 @@ def project_from_repo(entry, repo, readme, languages):
             tags.append(topic.replace("-", " "))
     tags = tags[:7]
     title = pretty_title(repo["name"])
+    images = readme_images(readme, repo)
     links = [{"label": "GitHub Repository", "url": repo["html_url"]}]
     if repo.get("homepage") and re.match(r"https?://", repo["homepage"]):
         links.append({"label": "Live Demo", "url": repo["homepage"]})
@@ -134,12 +175,15 @@ def project_from_repo(entry, repo, readme, languages):
         "description": auto["description"],
         "tags": tags,
         "links": links,
-        "cover": f"https://opengraph.githubassets.com/1/{full}",
-        "gallery": [],
+        "cover": images[0] if images else f"https://opengraph.githubassets.com/1/{full}",
+        "gallery": images[1:] if images else [],
         "created": repo.get("created_at"),
         "updated": repo.get("pushed_at") or repo.get("updated_at"),
     }
     for key in ("title", "summary", "description", "tags", "links", "cover", "gallery", "kind", "gallery_title", "tagline"):
         if entry.get(key):
             project[key] = entry[key]
+    # своє головне фото задано вручну, а галерею не задано: усі фото з README йдуть у галерею
+    if entry.get("cover") and not entry.get("gallery"):
+        project["gallery"] = images[:MAX_GALLERY]
     return project
