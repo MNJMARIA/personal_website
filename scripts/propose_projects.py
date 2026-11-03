@@ -30,6 +30,13 @@ def preview(full):
     return project_from_repo({"repo": full}, repo, readme, langs)
 
 
+def photos_line(project):
+    n = len(project.get("gallery") or [])
+    if "opengraph.githubassets.com" in (project.get("cover") or ""):
+        return "у README картинок не знайдено - буде стандартна картинка GitHub (додай скриншоти в README, і вони підтягнуться)"
+    return f"головне фото + {n} у галереї (з README)"
+
+
 def pr_body(owner, project):
     return (
         f"@{owner}, у репозиторії **[{project['repo']}](https://github.com/{project['repo']})** "
@@ -40,7 +47,8 @@ def pr_body(owner, project):
         f"### Так виглядатиме картка\n"
         f"- **Назва:** {project['title']['ua']}\n"
         f"- **Короткий опис:** {project['summary']['ua'] or '_(порожньо - додай опис репозиторію або README)_'}\n"
-        f"- **Технології:** {', '.join(project['tags']) or '-'}\n\n"
+        f"- **Технології:** {', '.join(project['tags']) or '-'}\n"
+        f"- **Фото:** {photos_line(project)}\n\n"
         f"<details><summary>Повний опис на сторінці проєкту</summary>\n\n"
         f"{project['description']['ua'] or '_(порожньо)_'}\n\n</details>\n\n"
         f"### Хочеш змінити текст?\n"
