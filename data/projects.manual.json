@@ -1,0 +1,182 @@
+[
+  {
+    "id": "crm-zaporuka",
+    "visible": true,
+    "title": {
+      "ua": "CRM/ERP для БФ \"Запорука\"",
+      "en": "CRM/ERP for BF \"Zaporuka\""
+    },
+    "kind": "Work Case",
+    "tagline": "Google Workspace API / Apps Script / Low-code",
+    "description": {
+      "ua": "CRM/ERP-система, розроблена для благодійного фонду «Запорука», з метою автоматизації внутрішніх бізнес-процесів та централізації роботи з даними. Рішення побудоване на базі Google Workspace із використанням Google Sheets, AppSheet та Google Apps Script, що дозволило створити єдину інформаційну систему без необхідності розробки окремого вебзастосунку. У межах проєкту було реалізовано автоматизацію обробки даних, інтеграцію між сервісами Google, генерацію документів, систему ролей, звітність та інструменти для щоденної роботи співробітників.",
+      "en": "A custom CRM/ERP system developed for the 'Zaporuka' Charity Foundation to automate internal business processes and centralize organizational data. The solution was built on the Google Workspace ecosystem using Google Sheets, AppSheet, and Google Apps Script, enabling a complete business management platform without developing a separate web application. The project includes workflow automation, Google service integrations, document generation, role-based access, reporting, and operational tools that streamline everyday activities for foundation staff."
+    },
+    "tags": [
+      "Google Workspace",
+      "AppScript",
+      "Low-code"
+    ],
+    "links": [],
+    "cover": "images/crm_zaporuka.avif",
+    "created": "2024",
+    "features": {
+      "ua": [
+        "Єдина CRM/ERP-система для централізованого управління даними фонду",
+        "Автоматизація внутрішніх бізнес-процесів та рутинних операцій",
+        "Інтеграція сервісів Google Workspace",
+        "Автоматичне створення документів та звітності",
+        "Рольова модель доступу",
+        "Аналітичні дашборди та моніторинг"
+      ],
+      "en": [
+        "Unified CRM/ERP system for centralized foundation data management",
+        "Automation of internal business processes and repetitive workflows",
+        "Google Workspace integrations",
+        "Automated document and report generation",
+        "Role-based access control",
+        "Analytics dashboards and monitoring"
+      ]
+    }
+  },
+  {
+    "id": "time-series-assets",
+    "visible": true,
+    "title": {
+      "ua": "Аналіз та прогнозування фінансових активів",
+      "en": "Time-Series Predictive Asset Analysis"
+    },
+    "kind": "Data Science Exploration",
+    "tagline": "Python / Data Science / ML",
+    "description": {
+      "ua": "Університетська курсова робота, присвячена аналізу ризиків та прогнозуванню доходності високоволатильних фінансових активів. Були реалізовані статистичні перевірки на стаціонарність (тест Дікі-Фуллера), очищення сирих аномалій та порівняльний аналіз лінійних моделей ARIMA/SARIMAX із нейромережами LSTM.",
+      "en": "University research and thesis focused on risk metrics and yield forecasting of highly volatile financial assets. Features predictive tests for stationarity (ADF test), data anomaly filter pipelines, and a benchmark matrix matching classic ARIMA/SARIMAX against deep learning LSTM setups."
+    },
+    "tags": [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Statsmodels",
+      "Scikit-Learn",
+      "LSTM"
+    ],
+    "links": [],
+    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
+    "gallery": [
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
+      "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=800"
+    ],
+    "created": "2026",
+    "gallery_title": {
+      "ua": "Метрики та аналітичні графіки",
+      "en": "Metrics & Analytical Frameworks"
+    }
+  },
+  {
+    "id": "todolist",
+    "visible": true,
+    "title": {
+      "ua": "Full-stack ToDoList Застосунок",
+      "en": "Full-stack ToDoList Application"
+    },
+    "kind": "Full-Stack Development",
+    "tagline": "Java / Spring Boot / Android SDK",
+    "description": {
+      "ua": "Практичний full-stack проєкт розробки кросплатформової системи керування завданнями. Архітектура рішення складається з потужної серверної частини на Java (Spring Boot) та мобільного клієнта на базі Android SDK. Для забезпечення миттєвої синхронізації даних, автентифікації користувачів та збереження стану було інтегровано хмарну платформу Firebase, що дозволило досягти високої відмовостійкості системи.",
+      "en": "A robust full-stack project focused on building a cross-platform task management system. The architecture features a powerful Java (Spring Boot) backend paired with a mobile client built via Android SDK. Cloud platform Firebase was integrated to handle instant data synchronization, user authentication, and secure remote storage, ensuring high availability and fault tolerance."
+    },
+    "tags": [
+      "Java",
+      "Spring Boot",
+      "Android SDK",
+      "Firebase",
+      "Gradle",
+      "HTML"
+    ],
+    "links": [
+      {
+        "label": "GitHub Repository",
+        "url": "https://github.com/MNJMARIA/ToDoList"
+      }
+    ],
+    "cover": "images/todolist_logo.png",
+    "gallery": [
+      "images/todolist_photo1.png",
+      "images/todolist_photo2.png",
+      "images/todolist_photo3.png",
+      "images/todolist_photo4.png"
+    ],
+    "created": "2025",
+    "repo": "MNJMARIA/ToDoList",
+    "gallery_title": {
+      "ua": "Метрики та архітектура клієнта",
+      "en": "UI Metrics & Architecture"
+    }
+  },
+  {
+    "id": "ais-hotel",
+    "visible": true,
+    "title": {
+      "ua": "АІС Готель",
+      "en": "AIS Hotel Management System"
+    },
+    "kind": "Desktop Application Engineering",
+    "tagline": "C# / WinForms / Data Storage",
+    "description": {
+      "ua": "Автоматизована інформаційна система (АІС) для оптимізації процесів адміністрування, бронювання та обліку номерного фонду готелів. Проєкт реалізовано як настільний десктоп-застосунок в середовищі Visual Studio з використанням технології WinForms для побудови чіткого та зрозумілого інтерфейсу користувача. Особливістю архітектури є кастомне файлове сховище даних (File-based Data Storage) для надійної локальної збереженості інформації.",
+      "en": "An Automated Information System (AIS) customized to optimize administration, booking pipelines, and room inventory metrics for hospitality businesses. Developed as a clean desktop application within Visual Studio using WinForms for intuitive UI orchestration. The infrastructure implements a custom, reliable file-based data storage model for secure local persistence and rapid information access."
+    },
+    "tags": [
+      "C#",
+      "Visual Studio",
+      "WinForms",
+      "File-based Storage"
+    ],
+    "links": [
+      {
+        "label": "GitHub Repository",
+        "url": "https://github.com/MNJMARIA/ais_hotel"
+      }
+    ],
+    "cover": "images/loginRolePhoto1.jpg",
+    "gallery": [
+      "images/ais_hotel_login.png",
+      "images/ais_hotel_room_selection.png",
+      "images/ais_hotel_guest_dashboard.png",
+      "images/ais_hotel_booking_form.png"
+    ],
+    "created": "2025",
+    "repo": "MNJMARIA/ais_hotel",
+    "gallery_title": {
+      "ua": "Інтерфейс користувача та структури",
+      "en": "User Interface & Systems"
+    }
+  },
+  {
+    "id": "finmate-api",
+    "visible": false,
+    "title": {
+      "ua": "FinMate Transaction API",
+      "en": "FinMate Transaction API"
+    },
+    "kind": "Case Study",
+    "tagline": "Swagger UI / Git",
+    "description": {
+      "ua": "FinMate — це мій довгостроковий pet-проєкт, який я поступово розвиваю у повноцінний персональний фінансовий застосунок. Наразі реалізовано окремий REST API-сервіс для управління транзакціями, що є основою майбутньої серверної архітектури. Проєкт розробляється з акцентом на чисту архітектуру, масштабованість та поступове розширення функціоналу — від CRUD-операцій до аналітики, категоризації витрат, бюджетування та AI-функцій.",
+      "en": "FinMate is my long-term personal side project that I am gradually evolving into a full-featured personal finance application. At the current stage, the project includes a dedicated REST API for transaction management, serving as the foundation of the future backend architecture. The application is being designed with scalability, maintainability, and clean architecture in mind, with plans to expand from basic CRUD operations to budgeting, analytics, expense categorization, and AI-powered financial features."
+    },
+    "tags": [
+      "Swagger UI",
+      "Git"
+    ],
+    "links": [
+      {
+        "label": "Swagger Documentation",
+        "url": "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/MNJMARIA/finmate-api-docs/refs/heads/main/mariia-709-transaction-service-api-1.0.0-oas3.1-unresolved.yaml#/"
+      }
+    ],
+    "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
+    "created": "2026"
+  }
+]
