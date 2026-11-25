@@ -587,7 +587,7 @@ footer {
 .carousel-slide {
     position: absolute; 
     width: 550px; 
-    height: 350px; 
+    height: 500px; 
     background-size: contain; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -703,7 +703,7 @@ footer {
     .project-card { margin-bottom: 30px; }
     .skill-category { margin-bottom: 40px; }
     .hero-title { font-size: 34px; }
-    .carousel-slide { width: 85%; height: 260px; }
+    .carousel-slide { width: 85%; height: 460px; }
     .carousel-slide.next-slide { transform: translate3d(40px, 0, -100px) scale(0.8); }
     .carousel-slide.prev-slide { transform: translate3d(-40px, 0, -100px) scale(0.8); }
 }
@@ -795,11 +795,11 @@ footer {
 /* Адаптивність для екранів смартфонів та планшетів */
 @media (max-width: 900px) {
     .carousel-container { 
-        height: 350px; 
+        height: 520px; 
     }
     .carousel-slide { 
         width: 85%; 
-        height: 280px; 
+        height: 460px; 
     }
 }
 
@@ -1103,3 +1103,15 @@ body.project-open .desktop-nav{
 .admin-form button[disabled] { opacity: .5; cursor: wait; }
 .admin-toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); z-index: 3100; max-width: 90vw; background: var(--text-white); color: var(--bg-pure-black); padding: 14px 22px; font-size: 14px; }
 .admin-toast.error { background: #ff6b6b; }
+
+/* ========================================== */
+/* ЯКІСТЬ ФОТО: вертикальні скриншоти, збільшення */
+/* ========================================== */
+.project-card-image.cover-contain { background-size: contain; background-repeat: no-repeat; background-color: #0b0c0e; }
+.proj-hero.cover-contain { background-size: auto 70%; background-position: right 3% center; background-repeat: no-repeat; background-color: var(--bg-pure-black); }
+@media (max-width: 768px) {
+    .proj-hero.cover-contain { background-size: auto 30%; background-position: center top 104px; }
+}
+.carousel-slide.active-slide { cursor: zoom-in; }
+.lightbox { position: fixed; inset: 0; z-index: 4000; background: rgba(0,0,0,.92); display: flex; align-items: center; justify-content: center; cursor: zoom-out; padding: 24px; }
+.lightbox img { max-width: 94vw; max-height: 94vh; object-fit: contain; }

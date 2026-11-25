@@ -69,10 +69,16 @@
     const textToBase64 = (text) => bytesToBase64(new TextEncoder().encode(text));
     const base64ToText = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), (c) => c.charCodeAt(0)));
 
-    // Стискаємо фото до JPEG ≤ 1600px, щоб сайт швидко вантажився
-    const compress = async (file, max = 1600, quality = 0.85) => {
+    // Фото зберігаємо в оригінальній якості (без стиснення). Лише дуже великі файли (> 6 МБ)
+    // або незвичні формати зменшуємо до 2560 px і зберігаємо як JPEG високої якості (0.92).
+    const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/avif': 'avif', 'image/gif': 'gif' };
+    const prepareImage = async (file) => {
         const bmp = await createImageBitmap(file);
-        const k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+        const portrait = bmp.width / bmp.height < 0.9;
+        if (EXT[file.type] && file.size <= 6 * 1024 * 1024) {
+            return { base64: bytesToBase64(new Uint8Array(await file.arrayBuffer())), ext: EXT[file.type], portrait };
+        }
+        const k = Math.min(1, 2560 / Math.max(bmp.width, bmp.height));
         const canvas = document.createElement('canvas');
         canvas.width = Math.round(bmp.width * k);
         canvas.height = Math.round(bmp.height * k);
@@ -80,8 +86,8 @@
         ctx.fillStyle = '#111215';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
-        const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', quality));
-        return bytesToBase64(new Uint8Array(await blob.arrayBuffer()));
+        const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.92));
+        return { base64: bytesToBase64(new Uint8Array(await blob.arrayBuffer())), ext: 'jpg', portrait };
     };
 
     const toast = (message, isError) => {
@@ -191,14 +197,16 @@
             const submit = form.querySelector('button[type=submit]');
             submit.disabled = true;
             try {
-                status.textContent = 'Стискаю фото…';
+                status.textContent = 'Готую фото…';
                 const titleUa = form.title_ua.value.trim();
                 const slug = translit(titleUa);
                 const dir = `${CFG.imageDir}/${slug}`;
-                const images = [{ path: `${dir}/cover.jpg`, base64: await compress(form.cover.files[0]) }];
+                const cover = await prepareImage(form.cover.files[0]);
+                const images = [{ path: `${dir}/cover.${cover.ext}`, base64: cover.base64 }];
                 const extra = [...form.gallery.files];
                 for (let i = 0; i < extra.length; i++) {
-                    images.push({ path: `${dir}/${i + 1}.jpg`, base64: await compress(extra[i]) });
+                    const img = await prepareImage(extra[i]);
+                    images.push({ path: `${dir}/${i + 1}.${img.ext}`, base64: img.base64 });
                 }
 
                 const descUa = form.desc_ua.value.trim();
@@ -211,6 +219,7 @@
                     tags: form.tags.value.split(',').map((t) => t.trim()).filter(Boolean),
                     links: link ? [{ label: /github\.com/i.test(link) ? 'GitHub Repository' : 'Open', url: link }] : [],
                     cover: images[0].path,
+                    cover_fit: cover.portrait ? 'contain' : 'cover',
                     gallery: images.slice(1).map((i) => i.path),
                     created: new Date().toISOString().slice(0, 10),
                     updated: new Date().toISOString().slice(0, 10),

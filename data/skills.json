@@ -1,0 +1,65 @@
+{
+  "_comment": "Розділ «Навички». Редагуйте тут. Технології з проєктів додаються автоматично (див. skill-catalog.json); порожні категорії не показуються.",
+  "ignore": [],
+  "categories": [
+    {
+      "id": "backend",
+      "title": {
+        "ua": "Backend",
+        "en": "Backend"
+      },
+      "items": [
+        "Java Core (OOP, Collections)",
+        "Spring Framework (Boot, Data)",
+        "REST API & Swagger UI",
+        "Oracle Database / Firebase / Microsoft SQL Server"
+      ]
+    },
+    {
+      "id": "frontend",
+      "title": {
+        "ua": "Frontend",
+        "en": "Frontend"
+      },
+      "items": []
+    },
+    {
+      "id": "mobile",
+      "title": {
+        "ua": "Мобільна розробка",
+        "en": "Mobile"
+      },
+      "items": []
+    },
+    {
+      "id": "data-science",
+      "title": {
+        "ua": "Data Science",
+        "en": "Data Science"
+      },
+      "items": [
+        "Python (Pandas, NumPy, Matplotlib, Flask)",
+        "Data Analysis & Visualization",
+        "Statistical Modeling (ARIMA / SARIMAX / LSTM)",
+        "Machine Learning Fundamentals",
+        "Generative AI & Prompt Engineering",
+        "Jupyter Notebook"
+      ]
+    },
+    {
+      "id": "tools-cloud",
+      "title": {
+        "ua": "Tools & Cloud",
+        "en": "Tools & Cloud"
+      },
+      "items": [
+        "Git / GitHub",
+        "Google Workspace & AppSheet",
+        "Google Apps Script",
+        "REST API Integrations",
+        "Netlify / Render",
+        "Jira / Agile / Scrum"
+      ]
+    }
+  ]
+}

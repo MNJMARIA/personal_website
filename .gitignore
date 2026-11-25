@@ -39,3 +39,4 @@ out/
 ### Site build ###
 _site/
 __pycache__/
+.cache/

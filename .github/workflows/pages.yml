@@ -25,6 +25,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Кеш перекладу: моделі Argos (одноразове завантаження) і вже перекладені тексти
+      - name: Cache translation models
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/argos-translate
+          key: argos-models-v1
+
+      - name: Cache translated texts
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: translations-${{ github.run_id }}
+          restore-keys: translations-
+
       - name: Build site and projects.json
         env:
           GH_TOKEN: ${{ github.token }}

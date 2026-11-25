@@ -50,6 +50,16 @@
         node.style.backgroundImage = [gradient, img].filter(Boolean).join(', ');
     };
 
+    // Вертикальні скриншоти (cover_fit = contain) показуємо повністю, без обрізання й без затемнення
+    const setCover = (node, p, gradient) => {
+        if (p.cover_fit === 'contain') {
+            node.classList.add('cover-contain');
+            setBg(node, p.cover, '');
+        } else {
+            setBg(node, p.cover, gradient);
+        }
+    };
+
     const pageId = (p) => 'project-' + String(p.id).toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
 
     const sortKey = (p) => {
@@ -101,7 +111,7 @@
         card.setAttribute('role', 'button');
 
         const image = make('div', 'project-card-image');
-        setBg(image, p.cover, 'linear-gradient(rgba(0,0,0,0.2), #050506)');
+        setCover(image, p, 'linear-gradient(rgba(0,0,0,0.2), #050506)');
 
         const info = make('div', 'project-card-info');
         info.appendChild(make('span', 'project-tag', p.tagline || (p.tags || []).slice(0, 3).join(' / ')));
@@ -131,7 +141,7 @@
 
         // hero
         const hero = make('section', 'proj-hero');
-        setBg(hero, p.cover, 'linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black))');
+        setCover(hero, p, 'linear-gradient(to bottom, rgba(5, 5, 6, 0.4), var(--bg-pure-black))');
         const heroBox = make('div', 'proj-hero-container');
         const dates = datesLine(p);
         const metaUa = [p.kind, dates.ua].filter(Boolean).join(' // ');
@@ -197,6 +207,7 @@
             gallery.forEach((src) => {
                 const slide = make('div', 'carousel-slide');
                 setBg(slide, src);
+                slide.dataset.src = safeUrl(src);   // оригінал для збільшення по кліку
                 track.appendChild(slide);
             });
             carousel.append(prev, track, next);
@@ -253,6 +264,24 @@
         if (location.hash.startsWith('#view-')) openProjectPage(location.hash.slice(6));
         document.dispatchEvent(new CustomEvent('projects:rendered', { detail: { count: (projects || []).length } }));
     };
+
+    // ---------- збільшення фото по кліку (оригінальна якість) ----------
+    const closeLightbox = () => {
+        const box = document.querySelector('.lightbox');
+        if (box) box.remove();
+    };
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.lightbox')) { closeLightbox(); return; }
+        const slide = e.target.closest('.carousel-slide.active-slide');
+        if (!slide || !slide.dataset.src) return;
+        const box = make('div', 'lightbox');
+        const img = document.createElement('img');
+        img.src = slide.dataset.src;
+        img.alt = '';
+        box.appendChild(img);
+        document.body.appendChild(box);
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
     const start = async () => render(await load());
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

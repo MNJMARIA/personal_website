@@ -54,12 +54,20 @@ def list_repos(owner):
 
 # ---------------------------------------------------------------- тексти ----
 
-def md_paragraphs(md):
-    """Звичайні абзаци тексту з README (без заголовків, списків, таблиць, бейджів, коду)."""
+def prepare_markdown(md):
+    """Прибирає коментарі, код, HTML-таблиці й теги (з <br> робить пробіл)."""
     md = re.sub(r"<!--.*?-->", "", md or "", flags=re.S)
     md = re.sub(r"```.*?```", "", md, flags=re.S)
     md = re.sub(r"~~~.*?~~~", "", md, flags=re.S)
+    md = re.sub(r"<table\b.*?</table>", "", md, flags=re.S | re.I)
+    md = re.sub(r"<br\s*/?>", " ", md, flags=re.I)
     md = re.sub(r"<[^>]+>", "", md)
+    return md
+
+
+def md_paragraphs(md):
+    """Звичайні абзаци тексту з README (без заголовків, списків, таблиць, бейджів, коду)."""
+    md = prepare_markdown(md)
     out = []
     for block in re.split(r"\n\s*\n", md):
         lines = [l.strip() for l in block.splitlines() if l.strip()]
@@ -74,6 +82,8 @@ def md_paragraphs(md):
         text = re.sub(r"\[([^\]]*)\]\[[^\]]*\]", r"\1", text)
         text = re.sub(r"(\*\*|__|\*|`|~~)", "", text)
         text = re.sub(r"\s+", " ", text).strip()
+        if text.endswith(":"):
+            continue  # вступ до списку, а не опис
         if len(text) >= 40 and re.search(r"[A-Za-zА-Яа-яІіЇїЄєҐґ]{3}", text):
             out.append(text)
     return out
@@ -97,7 +107,9 @@ BADGE_HINTS = (
     "travis-ci", "circleci.com", "sonarcloud.io", "snyk.io", "codacy.com", "visitor-badge",
     "hits.seeyoufarm", "star-history", "komarev.com", "badge", "/actions/workflows/",
 )
-MAX_GALLERY = 8
+MAX_GALLERY = 12
+# іконки й логотипи не підходять як фото проєкту
+NON_PHOTO = re.compile(r"(^|[/_.-])(icon|icons|logo|favicon|avatar|sprite)([/_.-]|$)", re.I)
 
 
 def readme_images(readme, repo):
@@ -126,10 +138,114 @@ def readme_images(readme, repo):
             url = f"https://raw.githubusercontent.com/{full}/{branch}/{path}"
         if any(h in url.lower() for h in BADGE_HINTS):
             continue
+        if NON_PHOTO.search(url.split("?")[0].lower().split("://", 1)[-1]):
+            continue
         url = url.replace(" ", "%20")
         if url not in urls:
             urls.append(url)
     return urls[: MAX_GALLERY + 1]
+
+
+PHOTO_DIRS = {"screens", "screenshots", "screenshot", "img", "imgs", "images", "image", "pictures", "photos",
+              "figures", "plots", "results", "media", "docs", "assets", "gallery", "demo", "preview", "previews", "pics"}
+PHOTO_DIRS_FIRST = {"screens", "screenshots", "screenshot", "gallery", "demo", "preview", "previews"}
+SKIP_DIRS = {"node_modules", ".git", ".github", "build", "dist", "venv", ".venv", "__pycache__", "android", "ios", "web",
+             "windows", "macos", "linux", "res", "test", "tests", "vendor", "target", "out"}
+PHOTO_EXT = (".png", ".jpg", ".jpeg", ".webp", ".gif")
+
+
+def natural_key(text):
+    return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", text)]
+
+
+def raw_url(repo, path):
+    from urllib.parse import quote
+    branch = repo.get("default_branch") or "main"
+    return f"https://raw.githubusercontent.com/{repo['full_name']}/{branch}/{quote(path)}"
+
+
+def folder_images(repo, tree):
+    """Фото з типових папок репозиторію (screens, screenshots, img, images, docs, ...): [(шлях, url)].
+
+    Використовується, коли README не містить картинок. Папки screens/screenshots мають пріоритет.
+    """
+    found = []
+    for node in (tree or {}).get("tree", []):
+        path = node.get("path", "")
+        if node.get("type") != "blob" or not path.lower().endswith(PHOTO_EXT):
+            continue
+        size = node.get("size") or 0
+        if size < 5 * 1024 or size > 15 * 1024 * 1024:
+            continue
+        *dirs, filename = path.split("/")
+        low = [d.lower() for d in dirs]
+        if not low or not (set(low) & PHOTO_DIRS) or (set(low) & SKIP_DIRS):
+            continue
+        if NON_PHOTO.search(path.lower()):
+            continue
+        rank = 0 if set(low) & PHOTO_DIRS_FIRST else 1
+        found.append((rank, natural_key(path), path))
+    found.sort()
+    return [(path, raw_url(repo, path)) for _, _, path in found[: MAX_GALLERY + 1]]
+
+
+def resolve_repo_path(repo, value):
+    """'repo:images/a.png' -> посилання на файл у репозиторії проєкту; інше без змін."""
+    if isinstance(value, str) and value.startswith("repo:"):
+        return raw_url(repo, value[5:].lstrip("/"))
+    return value
+
+
+FEATURE_HEAD = re.compile(r"(feature|можливост|функціонал|функції|functionality|capabilit|highlights|що вміє|what it does)", re.I)
+
+
+def clean_inline(text):
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)
+    text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
+    text = re.sub(r"(\*\*|__|\*|`|~~)", "", text)
+    text = re.sub(r"^\[[ xX]\]\s*", "", text.strip())
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def readme_features(md, limit=10):
+    """Список можливостей з розділу README «Можливості / Features».
+
+    Якщо розділ має підрозділи (###), кожен підрозділ дає один пункт «Назва - перше речення».
+    Інакше беруться пункти маркованого списку.
+    """
+    lines = prepare_markdown(md).splitlines()
+    heads = []
+    for i, line in enumerate(lines):
+        m = re.match(r"^(#{1,6})\s+(.*?)\s*#*\s*$", line)
+        if m:
+            heads.append((i, len(m.group(1)), clean_inline(m.group(2))))
+    for idx, (start, level, title) in enumerate(heads):
+        if not FEATURE_HEAD.search(title):
+            continue
+        end = next((j for j, lv, _ in heads[idx + 1:] if lv <= level), len(lines))
+        subs = [(j, t) for j, lv, t in heads[idx + 1:] if j < end and lv == level + 1]
+        items = []
+        if subs:
+            for j, sub_title in subs:
+                stop = min(next((j2 for j2, lv, _ in heads if j2 > j and lv <= level + 1), end), end)
+                body = "\n".join(lines[j + 1:stop])
+                paras = md_paragraphs(body)
+                if paras:
+                    first = paras[0]
+                else:
+                    bullets = re.findall(r"^\s*(?:[-*+]|\d+[.)])\s+(.*)$", body, flags=re.M)
+                    first = clean_inline(bullets[0]) if bullets else ""
+                items.append(f"{sub_title} - {truncate(first, 150)}" if first else sub_title)
+        else:
+            raw = [(len(m.group(1)), m.group(2)) for m in
+                   re.finditer(r"^(\s*)(?:[-*+]|\d+[.)])\s+(.*)$", "\n".join(lines[start + 1:end]), flags=re.M)]
+            if raw:
+                base = min(ind for ind, _ in raw)
+                items = [clean_inline(t) for ind, t in raw if ind == base]
+        items = [truncate(x, 200) for x in items if x]
+        if items:
+            return items[:limit]
+    return []
 
 
 def pretty_title(name):
@@ -151,7 +267,7 @@ def describe(repo, readme):
     }
 
 
-def project_from_repo(entry, repo, readme, languages):
+def project_from_repo(entry, repo, readme, languages, tree=None):
     """Збирає проєкт на основі репозиторію GitHub + ручних правок з data/approved/*.json."""
     full = repo["full_name"]
     auto = describe(repo, readme)
@@ -161,7 +277,13 @@ def project_from_repo(entry, repo, readme, languages):
             tags.append(topic.replace("-", " "))
     tags = tags[:7]
     title = pretty_title(repo["name"])
-    images = readme_images(readme, repo)
+    photos = (entry.get("photos") or "auto").lower()      # auto | readme | none
+    images = [] if photos == "none" else readme_images(readme, repo)
+    photo_source = "readme" if images else "none"
+    if not images and photos == "auto":
+        images = [url for _, url in folder_images(repo, tree)]
+        photo_source = "folders" if images else "none"
+    features = readme_features(readme)
     links = [{"label": "GitHub Repository", "url": repo["html_url"]}]
     if repo.get("homepage") and re.match(r"https?://", repo["homepage"]):
         links.append({"label": "Live Demo", "url": repo["homepage"]})
@@ -180,10 +302,19 @@ def project_from_repo(entry, repo, readme, languages):
         "created": repo.get("created_at"),
         "updated": repo.get("pushed_at") or repo.get("updated_at"),
     }
-    for key in ("title", "summary", "description", "tags", "links", "cover", "gallery", "kind", "gallery_title", "tagline"):
+    if features:
+        project["features"] = {"ua": features, "en": features}
+    project["_auto_images"] = not entry.get("cover")  # build_site.py сам вибере головне фото серед завантажених
+    project["_photo_source"] = photo_source
+    for key in ("title", "summary", "description", "tags", "links", "cover", "gallery", "features", "kind", "gallery_title", "tagline"):
         if entry.get(key):
             project[key] = entry[key]
-    # своє головне фото задано вручну, а галерею не задано: усі фото з README йдуть у галерею
+    # cover/gallery можуть вказувати на файли самого репозиторію проєкту: "repo:images/a.png"
+    project["cover"] = resolve_repo_path(repo, project.get("cover"))
+    project["gallery"] = [resolve_repo_path(repo, g) for g in project.get("gallery") or []]
+    # своє головне фото задано вручну, а галерею не задано: усі знайдені фото йдуть у галерею (без дубліката обкладинки)
     if entry.get("cover") and not entry.get("gallery"):
-        project["gallery"] = images[:MAX_GALLERY]
+        project["gallery"] = [u for u in images if u != project["cover"]][:MAX_GALLERY]
+    if entry.get("skills") is not None:
+        project["skills"] = entry["skills"]
     return project

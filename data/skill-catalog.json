@@ -1,0 +1,597 @@
+{
+ "_comment": "Каталог відомих технологій: назва тега/мови з GitHub -> категорія навичок. Додавайте свої рядки.",
+ "technologies": [
+  {
+   "name": "Java",
+   "category": "backend",
+   "aliases": [
+    "java"
+   ]
+  },
+  {
+   "name": "Spring",
+   "category": "backend",
+   "aliases": [
+    "spring",
+    "spring framework",
+    "spring boot",
+    "spring-boot",
+    "springboot"
+   ]
+  },
+  {
+   "name": "Node.js",
+   "category": "backend",
+   "aliases": [
+    "node.js",
+    "nodejs",
+    "node"
+   ]
+  },
+  {
+   "name": "Express",
+   "category": "backend",
+   "aliases": [
+    "express",
+    "express.js"
+   ]
+  },
+  {
+   "name": "Django",
+   "category": "backend",
+   "aliases": [
+    "django"
+   ]
+  },
+  {
+   "name": "Flask",
+   "category": "backend",
+   "aliases": [
+    "flask"
+   ]
+  },
+  {
+   "name": "FastAPI",
+   "category": "backend",
+   "aliases": [
+    "fastapi"
+   ]
+  },
+  {
+   "name": "C#",
+   "category": "backend",
+   "aliases": [
+    "c#",
+    "csharp"
+   ]
+  },
+  {
+   "name": ".NET",
+   "category": "backend",
+   "aliases": [
+    ".net",
+    "dotnet"
+   ]
+  },
+  {
+   "name": "Go",
+   "category": "backend",
+   "aliases": [
+    "go",
+    "golang"
+   ]
+  },
+  {
+   "name": "PHP",
+   "category": "backend",
+   "aliases": [
+    "php"
+   ]
+  },
+  {
+   "name": "Laravel",
+   "category": "backend",
+   "aliases": [
+    "laravel"
+   ]
+  },
+  {
+   "name": "PostgreSQL",
+   "category": "backend",
+   "aliases": [
+    "postgresql",
+    "postgres",
+    "plpgsql"
+   ]
+  },
+  {
+   "name": "MySQL",
+   "category": "backend",
+   "aliases": [
+    "mysql"
+   ]
+  },
+  {
+   "name": "SQLite",
+   "category": "backend",
+   "aliases": [
+    "sqlite"
+   ]
+  },
+  {
+   "name": "MongoDB",
+   "category": "backend",
+   "aliases": [
+    "mongodb",
+    "mongo"
+   ]
+  },
+  {
+   "name": "SQL",
+   "category": "backend",
+   "aliases": [
+    "sql",
+    "tsql",
+    "t-sql"
+   ]
+  },
+  {
+   "name": "Redis",
+   "category": "backend",
+   "aliases": [
+    "redis"
+   ]
+  },
+  {
+   "name": "REST API",
+   "category": "backend",
+   "aliases": [
+    "rest api",
+    "rest",
+    "restful"
+   ]
+  },
+  {
+   "name": "GraphQL",
+   "category": "backend",
+   "aliases": [
+    "graphql"
+   ]
+  },
+  {
+   "name": "Hibernate",
+   "category": "backend",
+   "aliases": [
+    "hibernate"
+   ]
+  },
+  {
+   "name": "Data Warehouse",
+   "category": "backend",
+   "aliases": [
+    "data warehouse",
+    "star schema",
+    "dwh"
+   ]
+  },
+  {
+   "name": "HTML",
+   "category": "frontend",
+   "aliases": [
+    "html"
+   ]
+  },
+  {
+   "name": "CSS",
+   "category": "frontend",
+   "aliases": [
+    "css",
+    "scss",
+    "sass"
+   ]
+  },
+  {
+   "name": "JavaScript",
+   "category": "frontend",
+   "aliases": [
+    "javascript",
+    "js"
+   ]
+  },
+  {
+   "name": "TypeScript",
+   "category": "frontend",
+   "aliases": [
+    "typescript",
+    "ts"
+   ]
+  },
+  {
+   "name": "React",
+   "category": "frontend",
+   "aliases": [
+    "react",
+    "reactjs",
+    "react.js"
+   ]
+  },
+  {
+   "name": "Vue",
+   "category": "frontend",
+   "aliases": [
+    "vue",
+    "vue.js"
+   ]
+  },
+  {
+   "name": "Angular",
+   "category": "frontend",
+   "aliases": [
+    "angular"
+   ]
+  },
+  {
+   "name": "Tailwind CSS",
+   "category": "frontend",
+   "aliases": [
+    "tailwind",
+    "tailwindcss"
+   ]
+  },
+  {
+   "name": "Bootstrap",
+   "category": "frontend",
+   "aliases": [
+    "bootstrap"
+   ]
+  },
+  {
+   "name": "Next.js",
+   "category": "frontend",
+   "aliases": [
+    "next.js",
+    "nextjs"
+   ]
+  },
+  {
+   "name": "Flutter",
+   "category": "mobile",
+   "aliases": [
+    "flutter"
+   ]
+  },
+  {
+   "name": "Dart",
+   "category": "mobile",
+   "aliases": [
+    "dart"
+   ]
+  },
+  {
+   "name": "Kotlin",
+   "category": "mobile",
+   "aliases": [
+    "kotlin"
+   ]
+  },
+  {
+   "name": "Swift",
+   "category": "mobile",
+   "aliases": [
+    "swift"
+   ]
+  },
+  {
+   "name": "Android",
+   "category": "mobile",
+   "aliases": [
+    "android"
+   ]
+  },
+  {
+   "name": "iOS",
+   "category": "mobile",
+   "aliases": [
+    "ios"
+   ]
+  },
+  {
+   "name": "React Native",
+   "category": "mobile",
+   "aliases": [
+    "react native",
+    "react-native"
+   ]
+  },
+  {
+   "name": "Python",
+   "category": "data-science",
+   "aliases": [
+    "python"
+   ]
+  },
+  {
+   "name": "Pandas",
+   "category": "data-science",
+   "aliases": [
+    "pandas"
+   ]
+  },
+  {
+   "name": "NumPy",
+   "category": "data-science",
+   "aliases": [
+    "numpy"
+   ]
+  },
+  {
+   "name": "Matplotlib",
+   "category": "data-science",
+   "aliases": [
+    "matplotlib"
+   ]
+  },
+  {
+   "name": "Jupyter Notebook",
+   "category": "data-science",
+   "aliases": [
+    "jupyter notebook",
+    "jupyter"
+   ]
+  },
+  {
+   "name": "scikit-learn",
+   "category": "data-science",
+   "aliases": [
+    "scikit-learn",
+    "sklearn"
+   ]
+  },
+  {
+   "name": "TensorFlow",
+   "category": "data-science",
+   "aliases": [
+    "tensorflow"
+   ]
+  },
+  {
+   "name": "Keras",
+   "category": "data-science",
+   "aliases": [
+    "keras"
+   ]
+  },
+  {
+   "name": "PyTorch",
+   "category": "data-science",
+   "aliases": [
+    "pytorch",
+    "torch"
+   ]
+  },
+  {
+   "name": "ARIMA",
+   "category": "data-science",
+   "aliases": [
+    "arima"
+   ]
+  },
+  {
+   "name": "SARIMAX",
+   "category": "data-science",
+   "aliases": [
+    "sarimax"
+   ]
+  },
+  {
+   "name": "LSTM",
+   "category": "data-science",
+   "aliases": [
+    "lstm"
+   ]
+  },
+  {
+   "name": "R",
+   "category": "data-science",
+   "aliases": [
+    "r"
+   ]
+  },
+  {
+   "name": "Power BI",
+   "category": "data-science",
+   "aliases": [
+    "power bi",
+    "powerbi"
+   ]
+  },
+  {
+   "name": "Tableau",
+   "category": "data-science",
+   "aliases": [
+    "tableau"
+   ]
+  },
+  {
+   "name": "Machine Learning",
+   "category": "data-science",
+   "aliases": [
+    "machine learning",
+    "machine-learning",
+    "ml"
+   ]
+  },
+  {
+   "name": "Time Series Analysis",
+   "category": "data-science",
+   "aliases": [
+    "time series",
+    "time-series",
+    "time series analysis"
+   ]
+  },
+  {
+   "name": "NLP",
+   "category": "data-science",
+   "aliases": [
+    "nlp",
+    "natural language processing"
+   ]
+  },
+  {
+   "name": "Data Analysis",
+   "category": "data-science",
+   "aliases": [
+    "data analysis",
+    "data-analysis"
+   ]
+  },
+  {
+   "name": "Git",
+   "category": "tools-cloud",
+   "aliases": [
+    "git"
+   ]
+  },
+  {
+   "name": "GitHub",
+   "category": "tools-cloud",
+   "aliases": [
+    "github"
+   ]
+  },
+  {
+   "name": "GitHub Actions",
+   "category": "tools-cloud",
+   "aliases": [
+    "github actions",
+    "github-actions"
+   ]
+  },
+  {
+   "name": "Docker",
+   "category": "tools-cloud",
+   "aliases": [
+    "docker",
+    "dockerfile"
+   ]
+  },
+  {
+   "name": "Firebase",
+   "category": "tools-cloud",
+   "aliases": [
+    "firebase"
+   ]
+  },
+  {
+   "name": "Netlify",
+   "category": "tools-cloud",
+   "aliases": [
+    "netlify"
+   ]
+  },
+  {
+   "name": "Render",
+   "category": "tools-cloud",
+   "aliases": [
+    "render"
+   ]
+  },
+  {
+   "name": "Vercel",
+   "category": "tools-cloud",
+   "aliases": [
+    "vercel"
+   ]
+  },
+  {
+   "name": "AWS",
+   "category": "tools-cloud",
+   "aliases": [
+    "aws",
+    "amazon web services"
+   ]
+  },
+  {
+   "name": "Azure",
+   "category": "tools-cloud",
+   "aliases": [
+    "azure"
+   ]
+  },
+  {
+   "name": "Google Cloud",
+   "category": "tools-cloud",
+   "aliases": [
+    "google cloud",
+    "gcp"
+   ]
+  },
+  {
+   "name": "Linux",
+   "category": "tools-cloud",
+   "aliases": [
+    "linux"
+   ]
+  },
+  {
+   "name": "Jira",
+   "category": "tools-cloud",
+   "aliases": [
+    "jira"
+   ]
+  },
+  {
+   "name": "Postman",
+   "category": "tools-cloud",
+   "aliases": [
+    "postman"
+   ]
+  },
+  {
+   "name": "Swagger UI",
+   "category": "tools-cloud",
+   "aliases": [
+    "swagger",
+    "swagger ui",
+    "openapi"
+   ]
+  },
+  {
+   "name": "Google Apps Script",
+   "category": "tools-cloud",
+   "aliases": [
+    "google apps script",
+    "apps script"
+   ]
+  },
+  {
+   "name": "Google Workspace",
+   "category": "tools-cloud",
+   "aliases": [
+    "google workspace"
+   ]
+  },
+  {
+   "name": "AppSheet",
+   "category": "tools-cloud",
+   "aliases": [
+    "appsheet"
+   ]
+  },
+  {
+   "name": "Gradle",
+   "category": "tools-cloud",
+   "aliases": [
+    "gradle"
+   ]
+  },
+  {
+   "name": "Maven",
+   "category": "tools-cloud",
+   "aliases": [
+    "maven"
+   ]
+  }
+ ]
+}
